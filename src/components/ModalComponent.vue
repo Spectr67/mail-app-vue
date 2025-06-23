@@ -32,6 +32,14 @@ document.addEventListener('DOMContentLoaded', function () {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
   position: top -100px;
   position: absolute;
+
+  background-image: url('./Images/kosmos_zvezdy_tumannost_157030_3840x2400.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  color: white;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
 }
 
 .modal-overlay {

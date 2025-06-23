@@ -33,5 +33,12 @@ body {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   padding: 20px;
   box-sizing: border-box;
+  background-image: url('/src/components/Images/kosmos_zvezdy_tumannost_157030_3840x2400.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  color: white;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
 }
 </style>
