@@ -1,22 +1,37 @@
 <script>
+import MButton from './MButton.vue'
+
 document.addEventListener('DOMContentLoaded', function () {
   const elems = document.querySelectorAll('.modal')
   const instances = M.Modal.init(elems)
   instances[0].open()
 })
+
+export default {
+  components: {
+    MButton,
+  },
+}
 </script>
 
 <template>
   <!-- Модальное окно с нужным классом -->
   <div id="modal1" class="modal custom-modal">
     <div class="modal-content">
-      <h4>Modal Header</h4>
-      <p>A bunch of text</p>
+      <h2>Welcome to the SpaceMail</h2>
+      <h5>A new expirience of emal app</h5>
     </div>
     <div class="modal-footer">
       <a href="#!" class="modal-close waves-effect waves-green btn-flat"
         >Agree</a
       >
+      <div>
+        <MButton caption="Login" class="modal-close waves-effect waves-green" />
+        <MButton
+          caption="Registration"
+          class="modal-close waves-effect waves-green"
+        />
+      </div>
     </div>
   </div>
 </template>

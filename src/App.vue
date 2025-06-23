@@ -1,8 +1,12 @@
 <script>
+import MBage from './components/MBage.vue'
 import ModalComponent from './components/ModalComponent.vue'
+import ModalForm from './components/ModalForm.vue'
 export default {
   components: {
     ModalComponent,
+    ModalForm,
+    MBage,
   },
 }
 </script>
@@ -11,6 +15,10 @@ export default {
   <div class="main">
     <h1>heee</h1>
     <ModalComponent />
+    <!-- <ModalForm /> -->
+    <div class="collection">
+      <MBage count="354" caption="Spam" />
+    </div>
   </div>
 </template>
 
