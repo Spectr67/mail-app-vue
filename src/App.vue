@@ -46,19 +46,19 @@ export default {
     <h1>heee</h1>
     <ModalComponent @open-form="openForm" />
     <MTab :list="tabs" />
-    <!-- <ModalForm v-if="showModal" :type="formType" @close="showModal = false">
+    <ModalForm v-if="showModal" :type="formType" @close="showModal = false">
       <slot name="login">
-        <MInput/>
-        <MInput/>
+        <MInput />
+        <MInput />
       </slot>
 
       <slot name="registration">
-        <MInput/>
-        <MInput/>
-        <MInput/>
-        <MInput/>
+        <MInput />
+        <MInput />
+        <MInput />
+        <MInput />
       </slot>
-    </ModalForm> -->
+    </ModalForm>
     <div class="collection">
       <!-- <MBage count="354" caption="Span" /> -->
     </div>

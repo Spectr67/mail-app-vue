@@ -24,9 +24,8 @@ const model = {
     },
   },
 
-  addUser(user) {
+  registerateUser(user) {
     this.users.push(user)
-    this.currentUser = user
   },
 
   loginUser(user) {
@@ -49,24 +48,30 @@ const model = {
   getMailListByTag(Tag) {
     return this.currentUser[Tag]
   },
-  setMailStatusByTag,
-  returnMailtoIncome,
+  // setMailStatusByTag,
+  // returnMailtoIncome,
 
-  sendMassage,
-  replyMassage,
+  // sendMassage,
+  // replyMassage,
 }
 
-// let privet = {
-//   email: 'user@example.com',
-//   password: '12345',
-//   firstName: 'Иван',
-//   secondName: 'Иванов',
-//   availableAddresses: ['user@example.com'],
-// }
-// model.addUser(privet)
-// console.log(model.users);
-// console.log(model.currentUser);
-// model.exitUser()
-// console.log(model.currentUser)
-// model.loginUser(privet)
-// console.log(model.currentUser);
+let privet = {
+  email: 'user@example.com',
+  password: '12345',
+  firstName: 'Иван',
+  secondName: 'Иванов',
+}
+let privet231 = {
+  email: 'u3424ser@example.com',
+  password: '12345',
+  firstName: 'Ив124ан',
+  secondName: 'Ивано214в',
+}
+model.registerateUser(privet)
+model.registerateUser(privet231)
+console.log(model.users)
+console.log(model.currentUser)
+model.exitUser()
+console.log(model.currentUser)
+model.loginUser(privet)
+console.log(model.currentUser)

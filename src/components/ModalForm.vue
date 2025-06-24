@@ -1,6 +1,12 @@
 <script>
 export default {
   props: ['formType'],
+  emits: ['closeModal'],
+  data() {
+    return {
+      modalInstance: null,
+    }
+  },
   mounted() {
     this.modalInstance = M.Modal.init(this.$refs.modalRef)
     this.modalInstance.open()
