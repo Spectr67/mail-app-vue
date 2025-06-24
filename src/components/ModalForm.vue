@@ -1,33 +1,35 @@
 <script>
-import MButton from './MButton.vue'
-
 export default {
-  components: {
-    MButton,
-  },
+  props: ['formType'],
   mounted() {
-    const elems = this.$el.querySelectorAll('.modal') // <-- фикс
-    M.Modal.init(elems)
+    this.modalInstance = M.Modal.init(this.$refs.modalRef)
+    this.modalInstance.open()
+  },
+  methods: {
+    closeModal() {
+      this.modalInstance.close()
+      this.$emit('close')
+    },
+  },
+  beforeUnmount() {
+    if (this.modalInstance) {
+      this.modalInstance.destroy()
+    }
   },
 }
 </script>
-
 <template>
-  <!-- Кнопка для открытия модалки -->
-  <a class="waves-effect waves-light btn modal-trigger" href="#modal2">
-    Открыть модалку
-  </a>
-
-  <!-- Модальное окно -->
-  <div id="modal2" class="modal">
-    <!-- <-- фикс тут -->
+  <div id="modal2" class="modal" ref="modalRef">
     <div class="modal-content">
-      <h4>Заголовок модалки</h4>
-      <p>Текст внутри модального окна</p>
+      <h4>{{ formType === 'login' ? 'Login Form' : 'Registration Form' }}</h4>
+      <div>
+        <slot name="login" v-if="formType === 'login'"></slot>
+        <slot name="registration"></slot>
+      </div>
     </div>
     <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect waves-green btn-flat">
-        Закрыть
+      <a href="#!" class="modal-close btn-flat" @click="closeModal">
+        Lets Start!
       </a>
     </div>
   </div>
@@ -35,6 +37,42 @@ export default {
 
 <style scoped>
 .modal {
-  border-radius: 12px;
+  border-radius: 16px;
+  background-color: rgba(10, 10, 30, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 24px;
+  max-width: 500px;
+  margin: auto;
+}
+
+.modal-content {
+  padding: 24px;
+}
+
+.modal-content h4 {
+  margin-bottom: 16px;
+  font-size: 24px;
+  color: #ffffff;
+  text-align: center;
+}
+
+.modal-content p {
+  text-align: center;
+  font-size: 16px;
+  color: #cfcfcf;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: center;
+  padding: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-footer .btn-flat {
+  color: #81d4fa;
+  font-weight: bold;
 }
 </style>
