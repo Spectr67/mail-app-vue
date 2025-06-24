@@ -1,11 +1,11 @@
 <script>
 import MButton from './MButton.vue'
 
-document.addEventListener('DOMContentLoaded', function () {
-  const elems = document.querySelectorAll('.modal')
-  const instances = M.Modal.init(elems)
-  instances[0].open()
-})
+// document.addEventListener('DOMContentLoaded', function () {
+//   const elems = document.querySelectorAll('.modal')
+//   const instances = M.Modal.init(elems)
+//   instances[0].open()
+// })
 
 export default {
   name: 'ModalComponent',

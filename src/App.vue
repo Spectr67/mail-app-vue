@@ -3,9 +3,10 @@ import MInput from './components/MInput.vue'
 import ModalComponent from './components/ModalComponent.vue'
 import ModalForm from './components/ModalForm.vue'
 import MTab from './components/MTab.vue'
+import TestArea from './TestArea.vue'
 
 export default {
-  components: { ModalComponent, ModalForm, MInput, MTab },
+  components: { ModalComponent, ModalForm, MInput, MTab, TestArea },
 
   data() {
     return {
@@ -42,7 +43,8 @@ export default {
 </script>
 
 <template>
-  <div class="main">
+  <TestArea />
+  <!-- <div class="main">
     <h1>heee</h1>
     <ModalComponent @open-form="openForm" />
     <MTab :list="tabs" />
@@ -60,12 +62,12 @@ export default {
       </slot>
     </ModalForm>
     <div class="collection">
-      <!-- <MBage count="354" caption="Span" /> -->
+      <MBage count="354" caption="Span" /> 
     </div>
-  </div>
+  </div> -->
 </template>
 
-<style>
+<!-- <style>
 body {
   margin: 0;
   padding: 0;
@@ -92,4 +94,4 @@ body {
   /* color: white; */
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
 }
-</style>
+</style> -->
