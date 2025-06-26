@@ -17,15 +17,14 @@ export default {
     MFormLogin,
     MFormRegistration,
   },
-
   data() {
     return {
       isShow: true,
       universalWindowContent: '',
+      users: [],
+      currentUser: null,
       sortingList: {
-        incoming: {
-          count: 421,
-        },
+        incoming: { count: 421 },
         favorites: { count: 123 },
         spam: { count: 23 },
         outconimg: { count: 54 },
@@ -57,16 +56,22 @@ export default {
 
 <template>
   {{ isShow }}
+  {{ currentUser }}
   <div class="main">
-    <!-- <MFormLogin /> -->
-    <!-- <MFormRegistration /> -->
-    <ModalWindow :is-show="isShow" @close="isShow = false" />
+    <ModalWindow
+      :is-show="isShow"
+      @close="isShow = false"
+      :users="users"
+      @add-user="users.push($event), (currentUser = $event)"
+    />
+
     <button @click="isShow = !isShow">switch</button>
     <MTab :list="tabs" />
     <div class="row">
+      <
       <div class="collection">
         <MBage
-          v-for="(item, key) in sortingList"
+          v-for="(item, key) in currentUser ? currentUser.mail : sortingList"
           :key="key"
           :count="item.count"
           :caption="key"
