@@ -1,5 +1,9 @@
 <script>
+import MButton from './MButton.vue'
+
 export default {
+  components: { MButton },
+
   props: ['isShow'],
 
   emits: ['close'],
@@ -26,6 +30,9 @@ export default {
       onCloseStart: () => this.$emit('close'),
     }
     this.instance = M.Modal.init(elem, options)
+    if (this.isShow) {
+      this.instance.open()
+    }
   },
 }
 </script>
@@ -33,9 +40,11 @@ export default {
 <template>
   <div ref="elModal" class="modal">
     <div class="modal-content">
-      <h4>Modal Header</h4>
-      <p>A bunch of text</p>
+      <h4>Welcome to the Space Mail</h4>
+      <p>A new experience of Email</p>
     </div>
+    <MButton caption="Login" />
+    <MButton caption="Registrate" />
     <div class="modal-footer">
       <a href="#!" class="modal-close waves-effect waves-green btn-flat">
         Agree

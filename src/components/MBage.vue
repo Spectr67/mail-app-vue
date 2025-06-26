@@ -11,5 +11,3 @@ export default {
     >{{ caption }}</a
   >
 </template>
-
-{{ lenth }}

@@ -25,9 +25,7 @@ export default {
       v-for="item in list"
       :key="item.id"
       :id="'tab-' + item.id"
-    >
-      <slot :name="item.title"></slot>
-    </div>
+    ></div>
   </div>
 </template>
 
