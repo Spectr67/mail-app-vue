@@ -59,7 +59,7 @@ export default {
   {{ isShow }}
   <div class="main">
     <!-- <MFormLogin /> -->
-    <MFormRegistration />
+    <!-- <MFormRegistration /> -->
     <ModalWindow :is-show="isShow" @close="isShow = false" />
     <button @click="isShow = !isShow">switch</button>
     <MTab :list="tabs" />

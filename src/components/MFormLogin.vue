@@ -1,4 +1,8 @@
-<script></script>
+<script>
+export default {
+  emits: ['close'],
+}
+</script>
 
 <template>
   <div class="row">
@@ -14,6 +18,15 @@
           <input id="password" type="password" class="validate" />
           <label for="password">Password</label>
         </div>
+      </div>
+      <div class="modal-footer">
+        <a
+          href="#!"
+          @click="$emit('close')"
+          class="waves-effect waves-red btn-flat"
+          >Cancel</a
+        >
+        <a href="#!" class="waves-effect waves-green btn-flat">Submit</a>
       </div>
     </form>
   </div>

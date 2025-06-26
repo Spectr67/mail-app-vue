@@ -1,8 +1,10 @@
 <script>
 import MButton from './MButton.vue'
+import MFormRegistration from './MFormRegisrtation.vue'
+import MFormLogin from './MFormLogin.vue'
 
 export default {
-  components: { MButton },
+  components: { MButton, MFormRegistration, MFormLogin },
 
   props: ['isShow'],
 
@@ -11,6 +13,7 @@ export default {
   data() {
     return {
       instance: null,
+      currentForm: 'none',
     }
   },
 
@@ -18,6 +21,7 @@ export default {
     isShow(value) {
       if (value) {
         this.instance.open()
+        this.currentForm = 'none'
       } else {
         this.instance.close()
       }
@@ -40,15 +44,20 @@ export default {
 <template>
   <div ref="elModal" class="modal">
     <div class="modal-content">
-      <h4>Welcome to the Space Mail</h4>
-      <p>A new experience of Email</p>
-    </div>
-    <MButton caption="Login" />
-    <MButton caption="Registrate" />
-    <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect waves-green btn-flat">
-        Agree
-      </a>
+      <template v-if="currentForm === 'none'">
+        <h4>Welcome to the Space Mail</h4>
+        <p>A new experience of Email</p>
+        <MButton caption="Login" @click="currentForm = 'login'" />
+        <MButton caption="Registrate" @click="currentForm = 'register'" />
+      </template>
+
+      <template v-else-if="currentForm === 'register'">
+        <MFormRegistration @close="currentForm = 'none'" />
+      </template>
+
+      <template v-else-if="currentForm === 'login'">
+        <MFormLogin @close="currentForm = 'none'" />
+      </template>
     </div>
   </div>
 </template>
