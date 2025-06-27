@@ -32,25 +32,20 @@ export default {
         drafts: { count: 45 },
         dump: { count: 1234 },
       },
-      tabs: [
-        {
-          id: 1,
-          title: 'Write Email',
-        },
-        {
-          title: 'adresses',
-          id: 2,
-        },
-        {
-          title: 'user Info',
-          id: 3,
-        },
-        {
-          title: 'Exit',
-          id: 4,
-        },
-      ],
     }
+  },
+  computed: {
+    tabs() {
+      return [
+        { id: 1, title: 'Write Email' },
+        { id: 2, title: 'adresses' },
+        {
+          id: 3,
+          title: this.currentUser ? this.currentUser.email : 'example@mail',
+        },
+        { id: 4, title: 'Exit' },
+      ]
+    },
   },
 }
 </script>
@@ -63,14 +58,17 @@ export default {
       :is-show="isShow"
       @close="isShow = false"
       :users="users"
-      @add-user="users.push($event), (currentUser = $event)"
+      @add-user="
+        users.push($event),
+          (currentUser = $event),
+          (this.tabs[3].title = currentUser.email)
+      "
     />
 
     <button @click="isShow = !isShow">switch</button>
     <MTab :list="tabs" @tab-change="activeTab = $event" />
 
     <div class="row">
-      <
       <div class="collection">
         <MBage
           v-for="(item, key) in currentUser ? currentUser.mail : sortingList"
