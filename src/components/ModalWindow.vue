@@ -10,14 +10,15 @@ const initUser = () => ({
   secondName: '',
   availableAddresses: [],
   mail: {
-    incoming: { count: 2 },
-    favorites: { count: 3 },
+    incoming: { count: 0 },
+    favorites: { count: 0 },
     spam: { count: 0 },
     outconimg: { count: 0 },
     drafts: { count: 0 },
-    dump: { count: 4 },
+    dump: { count: 0 },
   },
 })
+
 import MButton from './MButton.vue'
 import MFormRegistration from './MFormRegisrtation.vue'
 import MFormLogin from './MFormLogin.vue'

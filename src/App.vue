@@ -20,6 +20,7 @@ export default {
   data() {
     return {
       isShow: true,
+      activeTab: 1,
       universalWindowContent: '',
       users: [],
       currentUser: null,
@@ -66,7 +67,8 @@ export default {
     />
 
     <button @click="isShow = !isShow">switch</button>
-    <MTab :list="tabs" />
+    <MTab :list="tabs" @tab-change="activeTab = $event" />
+
     <div class="row">
       <
       <div class="collection">
@@ -78,7 +80,12 @@ export default {
         />
       </div>
 
-      <div class="universal-window"></div>
+      <div class="universal-window">
+        <div v-if="activeTab === 1">Write Email content</div>
+        <div v-else-if="activeTab === 2">Addresses content</div>
+        <div v-else-if="activeTab === 3">User Info content</div>
+        <div v-else-if="activeTab === 4">Exit content</div>
+      </div>
     </div>
   </div>
 </template>

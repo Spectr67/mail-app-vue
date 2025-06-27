@@ -1,15 +1,26 @@
 <script>
 export default {
   props: ['list'],
+  data() {
+    return {
+      activeTabId: null,
+    }
+  },
+  emits: ['tab-change'],
   mounted() {
     const el = this.$refs.tabs
     requestAnimationFrame(() => {
-      M.Tabs.init(el, { swipeable: true })
+      M.Tabs.init(el, {
+        onShow: tab => {
+          const id = tab.id.replace('tab-', '')
+          this.activeTabId = Number(id)
+          this.$emit('tab-change', this.activeTabId)
+        },
+      })
     })
   },
 }
 </script>
-
 <template>
   <div class="row">
     <div class="col s12">
@@ -23,9 +34,10 @@ export default {
     <div
       class="col s12"
       v-for="item in list"
-      :key="item.id"
+      :key="'content-' + item.id"
       :id="'tab-' + item.id"
-    ></div>
+      style="display: none"
+    />
   </div>
 </template>
 
