@@ -6,7 +6,7 @@ export default {
 </script>
 
 <template>
-  <a href="#!" class="collection-item"
+  <a href="#!" class="collection-item" @click="$emit('click', caption)"
     ><span class="badge">{{ count }}</span
     >{{ caption }}</a
   >

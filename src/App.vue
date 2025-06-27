@@ -32,19 +32,26 @@ export default {
         drafts: { count: 45 },
         dump: { count: 1234 },
       },
-    }
-  },
-  computed: {
-    tabs() {
-      return [
+      tabs: [
         { id: 1, title: 'Write Email' },
         { id: 2, title: 'adresses' },
-        {
-          id: 3,
-          title: this.currentUser ? this.currentUser.email : 'example@mail',
-        },
+        { id: 3, title: 'example@mail' },
         { id: 4, title: 'Exit' },
-      ]
+      ],
+    }
+  },
+
+  methods: {
+    handleBageClick(type) {
+      const map = {
+        incoming: 5,
+        favorites: 6,
+        spam: 7,
+        outconimg: 8,
+        drafts: 9,
+        dump: 10,
+      }
+      this.activeTab = map[type]
     },
   },
 }
@@ -61,7 +68,7 @@ export default {
       @add-user="
         users.push($event),
           (currentUser = $event),
-          (this.tabs[3].title = currentUser.email)
+          (tabs[2].title = $event.email)
       "
     />
 
@@ -75,6 +82,7 @@ export default {
           :key="key"
           :count="item.count"
           :caption="key"
+          @click="handleBageClick"
         />
       </div>
 
@@ -83,6 +91,12 @@ export default {
         <div v-else-if="activeTab === 2">Addresses content</div>
         <div v-else-if="activeTab === 3">User Info content</div>
         <div v-else-if="activeTab === 4">Exit content</div>
+        <div v-else-if="activeTab === 5">incoming</div>
+        <div v-else-if="activeTab === 6">favorites</div>
+        <div v-else-if="activeTab === 7">spam</div>
+        <div v-else-if="activeTab === 8">outconimg</div>
+        <div v-else-if="activeTab === 9">drafts</div>
+        <div v-else-if="activeTab === 10">dump</div>
       </div>
     </div>
   </div>
