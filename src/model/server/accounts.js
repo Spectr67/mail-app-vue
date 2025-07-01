@@ -13,18 +13,19 @@ function createAccount(email, passwd, firstName, lastName) {
   }
 }
 
-function findAccountByEmail(email) {
-  return accounts.find(a => a.email === email)
+function loginAccount(email, passwd) {
+  return accounts.find(a => a.email === email && a.passwd === passwd)
 }
 
 function registerAccount(email, passwd, firstName, lastName) {
-  const findedAccount = findAccountByEmail(email)
-  if (findedAccount) return
+  const findedAccount = accounts.find(a => a.email === email)
+  if (findedAccount) return false
   const account = createAccount(email, passwd, firstName, lastName)
   accounts.push(account)
+  return true
 }
 
-export { registerAccount, findAccountByEmail }
+export { registerAccount, loginAccount }
 
 // const account = {
 //   id: 1,

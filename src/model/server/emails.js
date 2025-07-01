@@ -2,23 +2,33 @@ import makeId from '../makeId.js'
 
 const emails = []
 
-function createEmail(recipient, sender, subject, text) {
+function createEmail(sender, recipient, subject, text) {
   return {
     id: makeId(),
     date: Date.now(),
-    recipient,
     sender,
+    recipient,
     subject,
     text,
   }
 }
 
-function addEmail(recipient, sender, subject, text) {
-  const email = createEmail(recipient, sender, subject, text)
+function sendEmail(sender, recipient, subject, text) {
+  const email = createEmail(sender, recipient, subject, text)
   emails.push(email)
 }
 
-export { addEmail }
+function receiveEmails(recipient) {
+  return emails.filter(e => e.recipient === recipient)
+}
+
+// read/write
+// get/set
+// receive/send
+// delete/create
+// remove/add
+
+export { sendEmail, receiveEmails }
 
 // const email = {
 //   id: 1,
