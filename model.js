@@ -1,14 +1,17 @@
 const model = {
   users: [],
   mail: {
+    isEditable: false,
     from: '',
+    to: '',
     title: '',
     text: '',
+    date: '',
+    id: 0,
   },
 
   currentUser: {
     id: Math.trunc(Math.random() * 0xff ** 4).toString(16),
-    isActive: false,
     email: '',
     password: '',
     firstName: '',

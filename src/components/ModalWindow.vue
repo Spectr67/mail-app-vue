@@ -3,7 +3,6 @@ const makeId = () => ((Math.random() * 0xffff_ffff) >>> 0).toString(16)
 
 const initUser = () => ({
   id: makeId(),
-  isActive: false,
   email: '',
   password: '',
   firstName: '',

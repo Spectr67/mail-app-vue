@@ -40,7 +40,6 @@ export default {
       ],
     }
   },
-
   methods: {
     handleBageClick(type) {
       const map = {
@@ -51,7 +50,24 @@ export default {
         drafts: 9,
         dump: 10,
       }
-      this.activeTab = map[type]
+      this.activeTab = map[type] || 0
+    },
+  },
+  computed: {
+    activeTabContent() {
+      const contentMap = {
+        1: 'Write Email content',
+        2: 'Addresses content',
+        3: 'User Info content',
+        4: 'Exit content',
+        5: 'incoming',
+        6: 'favorites',
+        7: 'spam',
+        8: 'outconimg',
+        9: 'drafts',
+        10: 'dump',
+      }
+      return contentMap[this.activeTab] || 'No content selected'
     },
   },
 }
@@ -87,16 +103,7 @@ export default {
       </div>
 
       <div class="universal-window">
-        <div v-if="activeTab === 1">Write Email content</div>
-        <div v-else-if="activeTab === 2">Addresses content</div>
-        <div v-else-if="activeTab === 3">User Info content</div>
-        <div v-else-if="activeTab === 4">Exit content</div>
-        <div v-else-if="activeTab === 5">incoming</div>
-        <div v-else-if="activeTab === 6">favorites</div>
-        <div v-else-if="activeTab === 7">spam</div>
-        <div v-else-if="activeTab === 8">outconimg</div>
-        <div v-else-if="activeTab === 9">drafts</div>
-        <div v-else-if="activeTab === 10">dump</div>
+        {{ activeTabContent }}
       </div>
     </div>
   </div>
