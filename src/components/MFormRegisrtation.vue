@@ -1,27 +1,27 @@
 <script>
+import { registerAccount } from '@/model/server/accounts.js'
+
+const initAccount = () => ({
+  firstName: 'qqq',
+  lastName: 'www',
+  email: 'eee@eee',
+  password: 'qwe',
+})
+
 export default {
   emits: ['close', 'userSubmit'],
 
   data() {
     return {
-      firstName: '',
-      lastName: '',
-      email: '',
-      password: '',
+      account: initAccount(),
     }
   },
 
   methods: {
     onSubmit() {
-      const userData = {
-        firstName: this.firstName,
-        lastName: this.lastName,
-        email: this.email,
-        password: this.password,
-      }
-
-      this.$emit('userSubmit', userData)
-      this.$emit('close')
+      // this.$emit('userSubmit', { ...account })
+      registerAccount({ ...this.account })
+      this.account = initAccount()
     },
   },
 }
@@ -32,7 +32,7 @@ export default {
     <div class="row">
       <div class="input-field col s6">
         <input
-          v-model="firstName"
+          v-model="account.firstName"
           id="first_name"
           type="text"
           class="validate"
@@ -42,7 +42,7 @@ export default {
       </div>
       <div class="input-field col s6">
         <input
-          v-model="lastName"
+          v-model="account.lastName"
           id="last_name"
           type="text"
           class="validate"
@@ -55,7 +55,7 @@ export default {
     <div class="row">
       <div class="input-field col s12">
         <input
-          v-model="email"
+          v-model="account.email"
           id="email"
           type="email"
           class="validate"
@@ -68,7 +68,7 @@ export default {
     <div class="row">
       <div class="input-field col s12">
         <input
-          v-model="password"
+          v-model="account.password"
           id="password"
           type="password"
           class="validate"
