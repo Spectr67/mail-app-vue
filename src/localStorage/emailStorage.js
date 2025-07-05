@@ -13,3 +13,5 @@ function addEmail(email) {
   emails.push(email)
   setEmails(emails)
 }
+
+export { getEmails }

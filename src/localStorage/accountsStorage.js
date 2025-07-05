@@ -14,3 +14,5 @@ function addAccount(account) {
   accounts.push(account)
   setAccounts(accounts)
 }
+
+export { getAccounts }

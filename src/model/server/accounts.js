@@ -1,7 +1,5 @@
 import makeId from '../makeId.js'
 
-const accounts = []
-
 function createAccount(email, passwd, firstName, lastName) {
   return {
     id: makeId(),
