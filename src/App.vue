@@ -22,7 +22,8 @@ export default {
       isShow: true,
       activeTab: 1,
       universalWindowContent: '',
-      users: [],
+      accounts: [],
+      mail: [],
       currentUser: null,
       sortingList: {
         incoming: { count: 421 },
@@ -80,14 +81,16 @@ export default {
     <ModalWindow
       :is-show="isShow"
       @close="isShow = false"
-      :users="users"
+      :accounts="accounts"
       @add-user="
-        users.push($event),
+        accounts.push($event),
           (currentUser = $event),
           (tabs[2].title = $event.email)
       "
     />
-
+    <div>
+      <MFormRegistration />
+    </div>
     <button @click="isShow = !isShow">switch</button>
     <MTab :list="tabs" @tab-change="activeTab = $event" />
 

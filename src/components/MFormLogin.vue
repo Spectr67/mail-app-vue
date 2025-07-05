@@ -1,24 +1,54 @@
 <script>
 export default {
-  emits: ['close'],
+  emits: ['close', 'userLogin'],
+
+  data() {
+    return {
+      email: '',
+      password: '',
+    }
+  },
+
+  methods: {
+    onSubmit() {
+      this.$emit('userLogin', {
+        email: this.email,
+        password: this.password,
+      })
+    },
+  },
 }
 </script>
 
 <template>
   <div class="row">
-    <form class="col s12">
+    <form class="col s12" @submit.prevent="onSubmit">
       <div class="row">
         <div class="input-field col s12">
-          <input id="email" type="email" class="validate" />
+          <input
+            v-model="email"
+            id="email"
+            type="email"
+            class="validate"
+            required
+          />
           <label for="email">Email</label>
         </div>
       </div>
+
       <div class="row">
         <div class="input-field col s12">
-          <input id="password" type="password" class="validate" />
+          <input
+            v-model="password"
+            id="password"
+            type="password"
+            class="validate"
+            required
+          />
           <label for="password">Password</label>
         </div>
       </div>
+
       <div class="modal-footer">
         <a
           href="#!"
@@ -26,7 +56,9 @@ export default {
           class="waves-effect waves-red btn-flat"
           >Cancel</a
         >
-        <a href="#!" class="waves-effect waves-green btn-flat">Submit</a>
+        <button type="submit" class="waves-effect waves-green btn-flat">
+          Submit
+        </button>
       </div>
     </form>
   </div>

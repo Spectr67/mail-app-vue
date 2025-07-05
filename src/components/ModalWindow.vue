@@ -7,7 +7,6 @@ const initUser = () => ({
   password: '',
   firstName: '',
   secondName: '',
-  availableAddresses: [],
   mail: {
     incoming: { count: 0 },
     favorites: { count: 0 },
@@ -25,7 +24,7 @@ import MFormLogin from './MFormLogin.vue'
 export default {
   components: { MButton, MFormRegistration, MFormLogin },
 
-  props: ['isShow', 'users', 'currentUser'],
+  props: ['isShow', 'accounts', 'currentUser'],
 
   emits: ['close', 'add-user'],
 
@@ -60,17 +59,24 @@ export default {
   },
   methods: {
     handleUserSubmit(userData) {
+      const findedAccount = this.accounts.find(a => a.email === userData.email)
+      if (findedAccount) return
       const newUser = initUser()
       newUser.firstName = userData.firstName
       newUser.secondName = userData.lastName
       newUser.email = userData.email
       newUser.password = userData.password
-      newUser.isActive = true
       this.$emit('add-user', newUser)
-
-      this.currentForm = 'none'
-      this.instance.close()
-      this.$emit('close')
+      this.currentForm = 'login'
+    },
+    handleUserLogin(loginData) {
+      const found = this.accounts.find(
+        a => a.email === loginData.email && a.password === loginData.password
+      )
+      if (found) {
+        this.$emit('close')
+        this.instance.close()
+      }
     },
   },
 }
@@ -94,7 +100,10 @@ export default {
       </template>
 
       <template v-else-if="currentForm === 'login'">
-        <MFormLogin @close="currentForm = 'none'" />
+        <MFormLogin
+          @close="currentForm = 'none'"
+          @userLogin="handleUserLogin"
+        />
       </template>
     </div>
   </div>

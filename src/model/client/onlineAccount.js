@@ -23,6 +23,7 @@ function sendB(recipient, subject, text) {
 function receiveA() {
   inboxA = receiveEmails(onlineAccountA.email)
 }
+4
 function receiveB() {
   inboxB = receiveEmails(onlineAccountB.email)
 }
