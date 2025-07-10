@@ -40,14 +40,13 @@ export default {
   <form class="col s12" @submit.prevent="onSubmit" ref="form">
     <div class="row">
       <div class="input-field col s6">
-        <label
-          ><input
-            v-model="account.firstName"
-            type="text"
-            class="validate"
-            required
-          />First Name</label
-        >
+        <label>First Name</label>
+        <input
+          v-model="account.firstName"
+          type="text"
+          class="validate"
+          required
+        />
       </div>
       <div class="input-field col s6">
         <label

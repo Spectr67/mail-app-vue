@@ -5,9 +5,11 @@ import ModalWindow from './components/ModalWindow.vue'
 import MTab from './components/MTab.vue'
 import MFormLogin from './components/MFormLogin.vue'
 import MFormRegistration from './components/MFormRegisrtation.vue'
+import MForm from './components/MForm.vue'
 
 export default {
   components: {
+    MForm,
     MInput,
     MTab,
     ModalWindow,
@@ -52,9 +54,12 @@ export default {
 </script>
 
 <template>
-  {{ accounts }}
+  <!-- {{ accounts }} -->
+
+  <MForm />
+
   <div class="main">
-    <div class="form">
+    <!--  <div class="form">
       <div class="leftone">
         <MFormRegistration
           @userSubmit="handleUserSubmit"
@@ -66,7 +71,7 @@ export default {
         <MFormLogin @userLogin="handleUserLogin" :accounts="accounts" />
       </div>
     </div>
-    <button @click="isShow = !isShow">switch</button>
+    <button @click="isShow = !isShow">switch</button> -->
     <!-- <MTab :list="tabs" @tab-change="activeTab = $event" /> -->
   </div>
 </template>

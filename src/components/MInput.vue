@@ -11,22 +11,31 @@ export default {
       instanceId: randId(),
     }
   },
+
+  mounted() {
+    this.$refs.elInput.focus()
+  },
 }
 </script>
 
+Model View ViewModel
+
 <template>
-  <div class="row">
-    <div class="input-field col s6">
-      <input
-        :value="modelValue"
-        @input="$emit('update:modelValue', $event.target.value)"
-        type="text"
-        class="validate"
-        :id="instanceId"
-      />
-      <label :class="{ active: modelValue !== '' }" :for="instanceId">
-        {{ caption }}
-      </label>
-    </div>
+  <div class="input-field">
+    <input
+      ref="elInput"
+      :value="modelValue"
+      @input="$emit('update:modelValue', $event.target.value)"
+      type="text"
+      class="validate"
+      :id="instanceId"
+    />
+    <label
+      :class="{ active: modelValue !== '' }"
+      :for="instanceId"
+      class="active"
+    >
+      {{ caption }}
+    </label>
   </div>
 </template>
