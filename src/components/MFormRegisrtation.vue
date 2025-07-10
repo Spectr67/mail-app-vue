@@ -9,8 +9,8 @@ const initAccount = () => ({
 })
 
 export default {
-  emits: ['close', 'userSubmit'],
-
+  emits: ['close', 'userSubmit', 'click', 'serverSubmit'],
+  props: ['accounts'],
   data() {
     return {
       account: initAccount(),
@@ -19,62 +19,71 @@ export default {
 
   methods: {
     onSubmit() {
-      // this.$emit('userSubmit', { ...account })
-      registerAccount({ ...this.account })
-      this.account = initAccount()
+      const data = { ...this.account }
+      const response = registerAccount(data, this.accounts)
+      console.log(response)
+      this.$emit('serverSubmit', response)
+      if (response) {
+        this.$emit('userSubmit', data)
+        this.account = initAccount()
+      }
+    },
+    click() {
+      const inputs = this.$refs.form.querySelectorAll('input')
+      inputs.forEach(input => input.focus())
     },
   },
 }
 </script>
 
 <template>
-  <form class="col s12" @submit.prevent="onSubmit">
+  <form class="col s12" @submit.prevent="onSubmit" ref="form">
     <div class="row">
       <div class="input-field col s6">
-        <input
-          v-model="account.firstName"
-          id="first_name"
-          type="text"
-          class="validate"
-          required
-        />
-        <label for="first_name">First Name</label>
+        <label
+          ><input
+            v-model="account.firstName"
+            type="text"
+            class="validate"
+            required
+          />First Name</label
+        >
       </div>
       <div class="input-field col s6">
-        <input
-          v-model="account.lastName"
-          id="last_name"
-          type="text"
-          class="validate"
-          required
-        />
-        <label for="last_name">Last Name</label>
+        <label
+          ><input
+            v-model="account.lastName"
+            type="text"
+            class="validate"
+            required
+          />Last Name</label
+        >
       </div>
     </div>
 
     <div class="row">
       <div class="input-field col s12">
-        <input
-          v-model="account.email"
-          id="email"
-          type="email"
-          class="validate"
-          required
-        />
-        <label for="email">Email</label>
+        <label>
+          <input
+            v-model="account.email"
+            type="email"
+            class="validate"
+            required
+          />Email</label
+        >
       </div>
     </div>
 
     <div class="row">
       <div class="input-field col s12">
-        <input
-          v-model="account.password"
-          id="password"
-          type="password"
-          class="validate"
-          required
-        />
-        <label for="password">Password</label>
+        <label>
+          <input
+            v-model="account.password"
+            type="password"
+            class="validate"
+            required
+          />Password</label
+        >
       </div>
     </div>
 

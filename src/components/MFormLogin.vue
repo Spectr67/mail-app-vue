@@ -1,6 +1,10 @@
 <script>
+import { loginAccount } from '@/model/server/accounts'
+
 export default {
   emits: ['close', 'userLogin'],
+
+  props: ['accounts'],
 
   data() {
     return {
@@ -11,10 +15,11 @@ export default {
 
   methods: {
     onSubmit() {
-      this.$emit('userLogin', {
-        email: this.email,
-        password: this.password,
-      })
+      const user = loginAccount(this.email, this.password, this.accounts)
+      if (user) {
+        this.$emit('userLogin', user)
+        console.log(user)
+      }
     },
   },
 }
@@ -25,27 +30,27 @@ export default {
     <form class="col s12" @submit.prevent="onSubmit">
       <div class="row">
         <div class="input-field col s12">
-          <input
-            v-model="email"
-            id="email"
-            type="email"
-            class="validate"
-            required
-          />
-          <label for="email">Email</label>
+          <label
+            ><input
+              v-model="email"
+              type="email"
+              class="validate"
+              required
+            />Email</label
+          >
         </div>
       </div>
 
       <div class="row">
         <div class="input-field col s12">
-          <input
-            v-model="password"
-            id="password"
-            type="password"
-            class="validate"
-            required
-          />
-          <label for="password">Password</label>
+          <label
+            ><input
+              v-model="password"
+              type="password"
+              class="validate"
+              required
+            />Password</label
+          >
         </div>
       </div>
 

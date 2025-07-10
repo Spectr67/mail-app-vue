@@ -17,6 +17,7 @@ export default {
   },
   data() {
     return {
+      serverSubmit: false,
       isShow: true,
       activeTab: 1,
       universalWindowContent: '',
@@ -34,10 +35,19 @@ export default {
     }
   },
   methods: {
-    handleUserSubmit(userData) {
-      
-    }
-  }
+    handleUserSubmit(account) {
+      if (this.serverSubmit) {
+        this.accounts.push(account)
+      }
+    },
+    handleServerSubmit(response) {
+      this.serverSubmit = response
+    },
+    handleUserLogin(user) {
+      this.currentUser = user
+      console.log('User', user)
+    },
+  },
 }
 </script>
 
@@ -46,10 +56,14 @@ export default {
   <div class="main">
     <div class="form">
       <div class="leftone">
-        <MFormRegistration @userSubmit="handleUserSubmit" />
+        <MFormRegistration
+          @userSubmit="handleUserSubmit"
+          @serverSubmit="handleServerSubmit"
+          :accounts="accounts"
+        />
       </div>
       <div class="rightone">
-        <MFormLogin @userLogin="handleUserLogin" />
+        <MFormLogin @userLogin="handleUserLogin" :accounts="accounts" />
       </div>
     </div>
     <button @click="isShow = !isShow">switch</button>
