@@ -34,52 +34,43 @@ export default {
 </script>
 
 <template>
-  <form class="col s12" @submit.prevent="onSubmit">
+  <form class="container" @submit.prevent="onSubmit">
     <div class="row">
-      <div class="input-field col s6">
-        <label>First Name</label>
-        <input
+      <div class="col s4">
+        <MInput
           v-model="account.firstName"
+          caption="First Name"
           type="text"
           class="validate"
           required
         />
       </div>
-      <div class="input-field col s6">
-        <label
-          ><input
-            v-model="account.lastName"
-            type="text"
-            class="validate"
-            required
-          />Last Name</label
-        >
+      <div class="col s4">
+        <MInput
+          v-model="account.secondName"
+          caption="Second Name"
+          type="text"
+          class="validate"
+          required
+        />
       </div>
-    </div>
-
-    <div class="row">
-      <div class="input-field col s12">
-        <label>
-          <input
-            v-model="account.email"
-            type="email"
-            class="validate"
-            required
-          />Email</label
-        >
+      <div class="col s8">
+        <MInput
+          v-model="account.email"
+          caption="Email"
+          type="email"
+          class="validate"
+          required
+        />
       </div>
-    </div>
-
-    <div class="row">
-      <div class="input-field col s12">
-        <label>
-          <input
-            v-model="account.password"
-            type="password"
-            class="validate"
-            required
-          />Password</label
-        >
+      <div class="col s8">
+        <MInput
+          v-model="account.password"
+          caption="Password"
+          type="password"
+          class="validate"
+          required
+        />
       </div>
     </div>
 
@@ -88,8 +79,9 @@ export default {
         href="#!"
         @click="$emit('close')"
         class="waves-effect waves-red btn-flat"
-        >Cancel</a
       >
+        Cancel
+      </a>
       <button type="submit" class="waves-effect waves-green btn-flat">
         Submit
       </button>

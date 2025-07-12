@@ -51,7 +51,7 @@ export default {
       </div>
     </div>
     <button @click="isShow = !isShow">switch</button>
-    <MTab :list="tabs" @tab-change="activeTab = $event" />
+    <!-- <MTab :list="tabs" @tab-change="activeTab = $event" /> -->
   </div>
 </template>
 

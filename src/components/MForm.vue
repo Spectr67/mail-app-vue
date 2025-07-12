@@ -38,7 +38,7 @@ export default {
     <div class="row">
       <div class="col s4">
         <MInput
-          v-model="firstName"
+          v-model="account.firstName"
           caption="First Name"
           type="text"
           class="validate"
@@ -47,7 +47,7 @@ export default {
       </div>
       <div class="col s4">
         <MInput
-          v-model="secondName"
+          v-model="account.secondName"
           caption="Second Name"
           type="text"
           class="validate"
@@ -56,7 +56,7 @@ export default {
       </div>
       <div class="col s8">
         <MInput
-          v-model="email"
+          v-model="account.email"
           caption="Email"
           type="email"
           class="validate"
@@ -65,7 +65,7 @@ export default {
       </div>
       <div class="col s8">
         <MInput
-          v-model="password"
+          v-model="account.password"
           caption="Password"
           type="password"
           class="validate"
