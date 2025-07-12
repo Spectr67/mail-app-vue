@@ -1,6 +1,6 @@
 <script>
 import { registerAccount } from '@/model/server/accounts.js'
-
+import MInput from './MInput.vue'
 const initAccount = () => ({
   firstName: 'qqq',
   lastName: 'www',
@@ -9,6 +9,7 @@ const initAccount = () => ({
 })
 
 export default {
+  components: { MInput },
   emits: ['close', 'userSubmit', 'click', 'serverSubmit'],
   props: ['accounts'],
   data() {
@@ -28,16 +29,12 @@ export default {
         this.account = initAccount()
       }
     },
-    click() {
-      const inputs = this.$refs.form.querySelectorAll('input')
-      inputs.forEach(input => input.focus())
-    },
   },
 }
 </script>
 
 <template>
-  <form class="col s12" @submit.prevent="onSubmit" ref="form">
+  <form class="col s12" @submit.prevent="onSubmit">
     <div class="row">
       <div class="input-field col s6">
         <label>First Name</label>

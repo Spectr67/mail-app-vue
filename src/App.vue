@@ -1,8 +1,4 @@
 <script>
-import MBage from './components/MBage.vue'
-import MInput from './components/MInput.vue'
-import ModalWindow from './components/ModalWindow.vue'
-import MTab from './components/MTab.vue'
 import MFormLogin from './components/MFormLogin.vue'
 import MFormRegistration from './components/MFormRegisrtation.vue'
 import MForm from './components/MForm.vue'
@@ -10,30 +6,15 @@ import MForm from './components/MForm.vue'
 export default {
   components: {
     MForm,
-    MInput,
-    MTab,
-    ModalWindow,
-    MBage,
     MFormLogin,
     MFormRegistration,
   },
   data() {
     return {
       serverSubmit: false,
-      isShow: true,
-      activeTab: 1,
-      universalWindowContent: '',
       accounts: [],
       mail: [],
       currentUser: null,
-      sortingList: {
-        incoming: { count: 421 },
-        favorites: { count: 123 },
-        spam: { count: 23 },
-        outconimg: { count: 54 },
-        drafts: { count: 45 },
-        dump: { count: 1234 },
-      },
     }
   },
   methods: {
@@ -54,14 +35,12 @@ export default {
 </script>
 
 <template>
-  <!-- {{ accounts }} -->
-
-  <MForm />
+  {{ accounts }}
 
   <div class="main">
-    <!--  <div class="form">
+    <div class="form">
       <div class="leftone">
-        <MFormRegistration
+        <MForm
           @userSubmit="handleUserSubmit"
           @serverSubmit="handleServerSubmit"
           :accounts="accounts"
@@ -71,8 +50,8 @@ export default {
         <MFormLogin @userLogin="handleUserLogin" :accounts="accounts" />
       </div>
     </div>
-    <button @click="isShow = !isShow">switch</button> -->
-    <!-- <MTab :list="tabs" @tab-change="activeTab = $event" /> -->
+    <button @click="isShow = !isShow">switch</button>
+    <MTab :list="tabs" @tab-change="activeTab = $event" />
   </div>
 </template>
 
