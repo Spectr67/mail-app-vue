@@ -1,15 +1,15 @@
 <script>
 export default {
   props: ['caption', 'icon'],
-  emits: ['click'],
 }
 </script>
 
 <template>
-  <a class="waves-effect waves-light btn" @click="$emit('click')">
+  {{ icon }}
+  <button type="submit" class="waves-effect waves-light btn">
     <i v-if="icon" class="material-icons left">{{ icon }}</i>
     <span>{{ caption }}</span>
-  </a>
+  </button>
 </template>
 
 <style scoped>

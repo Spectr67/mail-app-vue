@@ -6,14 +6,10 @@ export default {
 
   data() {
     return {
-      skeleton: {
-        top: ['s4', 's8'],
-        top2: ['s2', 's4', 's1', 's2', 's3'],
-        middle: ['s2', 's4', 's1', 's2', 's3'],
-        midlee2: ['s2', 's4', 's1', 's2', 's3'],
-        bottom1: ['s2', 's4', 's1', 's2', 's3'],
-        bottom2: ['s2', 's4', 's1', 's2', 's3'],
-      },
+      skeleton: [
+        ['s4', 's8'],
+        ['s6', 's6'],
+      ],
     }
   },
 }

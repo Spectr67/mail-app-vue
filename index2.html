@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta/dist/vanta.waves.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta/dist/vanta.birds.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta/dist/vanta.halo.min.js"></script>
+  </head>
+  <body>
+    <div id="your-element-selector"></div>
+    <script>
+      // VANTA.BIRDS({
+      //   el: '#your-element-selector',
+      //   mouseControls: true,
+      //   touchControls: true,
+      //   gyroControls: false,
+      //   minHeight: 200.0,
+      //   minWidth: 200.0,
+      //   scale: 1.0,
+      //   scaleMobile: 1.0,
+      // })
+      VANTA.HALO({
+        el: '#your-element-selector',
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.0,
+        minWidth: 200.0,
+        amplitudeFactor: 3.0,
+        xOffset: 0.04,
+        yOffset: 0.06,
+        size: 0.3,
+      })
+    </script>
+  </body>
+</html>

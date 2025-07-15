@@ -1,30 +1,42 @@
 <script>
+import MButton from './MButton.vue'
 import MInput from './MInput.vue'
 
 export default {
-  components: { MInput },
+  components: { MInput, MButton },
 
   props: ['skeleton'],
 
   data() {
-    return {}
+    return {
+      yo: 'yo',
+    }
   },
 }
 </script>
 
 <template>
   <form class="container" @submit.prevent="console.log">
-    <div v-for="(val, key) in skeleton" :key="key" class="row">
-      <div v-for="(item, idx) of val" :key="idx" class="col" :class="item">
-        {{ item }}
-        <!-- <MInput caption="First Name" type="text" class="validate" required /> -->
+    <div v-for="(row, idx) of skeleton" :key="idx" class="row">
+      <div v-for="(col, idx) of row" :key="idx" class="col" :class="col">
+        <MInput
+          :placeholder="col"
+          caption="First Name"
+          type="text"
+          class="validate"
+          v-model="yo"
+          required
+        />
       </div>
+    </div>
+    <div>
+      <MButton caption="Войти" icon="login" />
     </div>
   </form>
 </template>
 
 <style>
-div {
+/* div {
   border: 1px solid #000;
-}
+} */
 </style>
