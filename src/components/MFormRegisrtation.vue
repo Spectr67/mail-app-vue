@@ -1,6 +1,7 @@
 <script>
 import { registerAccount } from '@/model/server/accounts.js'
 import MInput from './MInput.vue'
+import MButton from './MButton.vue'
 const initAccount = () => ({
   firstName: 'qqq',
   lastName: 'www',
@@ -9,8 +10,8 @@ const initAccount = () => ({
 })
 
 export default {
-  components: { MInput },
-  emits: ['close', 'userSubmit', 'click', 'serverSubmit'],
+  components: { MInput, MButton },
+  emits: ['userSubmit', 'serverSubmit'],
   props: ['accounts'],
   data() {
     return {
@@ -22,7 +23,6 @@ export default {
     onSubmit() {
       const data = { ...this.account }
       const response = registerAccount(data, this.accounts)
-      console.log(response)
       this.$emit('serverSubmit', response)
       if (response) {
         this.$emit('userSubmit', data)
@@ -36,7 +36,7 @@ export default {
 <template>
   <form class="container" @submit.prevent="onSubmit">
     <div class="row">
-      <div class="col s4">
+      <div class="col s6">
         <MInput
           v-model="account.firstName"
           caption="First Name"
@@ -45,7 +45,7 @@ export default {
           required
         />
       </div>
-      <div class="col s4">
+      <div class="col s6">
         <MInput
           v-model="account.secondName"
           caption="Second Name"
@@ -54,7 +54,7 @@ export default {
           required
         />
       </div>
-      <div class="col s8">
+      <div class="col s12">
         <MInput
           v-model="account.email"
           caption="Email"
@@ -63,7 +63,7 @@ export default {
           required
         />
       </div>
-      <div class="col s8">
+      <div class="col s12">
         <MInput
           v-model="account.password"
           caption="Password"
@@ -75,16 +75,8 @@ export default {
     </div>
 
     <div class="modal-footer">
-      <a
-        href="#!"
-        @click="$emit('close')"
-        class="waves-effect waves-red btn-flat"
-      >
-        Cancel
-      </a>
-      <button type="submit" class="waves-effect waves-green btn-flat">
-        Submit
-      </button>
+      <MButton caption="Cancel" />
+      <MButton caption="Submit" />
     </div>
   </form>
 </template>

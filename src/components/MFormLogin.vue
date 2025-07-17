@@ -1,10 +1,12 @@
 <script>
 import { loginAccount } from '@/model/server/accounts'
+
 import MInput from './MInput.vue'
+import MButton from './MButton.vue'
 
 export default {
-  components: { MInput },
-  emits: ['close', 'userLogin'],
+  components: { MInput, MButton },
+  emits: ['userLogin'],
   props: ['accounts'],
 
   data() {
@@ -16,12 +18,9 @@ export default {
 
   methods: {
     onSubmit() {
-      console.log(this.email)
       const user = loginAccount(this.email, this.password, this.accounts)
-      console.log(user)
       if (user) {
         this.$emit('userLogin', user)
-        console.log(user)
       }
     },
   },
@@ -31,7 +30,7 @@ export default {
 <template>
   <form class="container" @submit.prevent="onSubmit">
     <div class="row">
-      <div class="col s8">
+      <div class="col s12">
         <MInput
           v-model="email"
           caption="Email"
@@ -40,7 +39,7 @@ export default {
           required
         />
       </div>
-      <div class="col s8">
+      <div class="col s12">
         <MInput
           v-model="password"
           caption="Password"
@@ -52,15 +51,8 @@ export default {
     </div>
 
     <div class="modal-footer">
-      <a
-        href="#!"
-        @click="$emit('close')"
-        class="waves-effect waves-red btn-flat"
-        >Cancel</a
-      >
-      <button type="submit" class="waves-effect waves-green btn-flat">
-        Submit
-      </button>
+      <MButton caption="Cancel" />
+      <MButton caption="Submit" />
     </div>
   </form>
 </template>

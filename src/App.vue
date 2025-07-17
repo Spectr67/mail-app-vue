@@ -40,7 +40,7 @@ export default {
   <div class="main">
     <div class="form">
       <div class="leftone">
-        <MForm
+        <MFormRegistration
           @userSubmit="handleUserSubmit"
           @serverSubmit="handleServerSubmit"
           :accounts="accounts"
