@@ -6,10 +6,22 @@ export default {
 
   data() {
     return {
-      skeleton: [
-        ['s4', 's8'],
-        ['s6', 's6'],
-      ],
+      list: [],
+      skeleton: [{ email: 's12' }, { login: 's6', passwd: 's6' }],
+      struct: {
+        email: {
+          caption: 'Ваш email',
+          data: undefined,
+        },
+        login: {
+          caption: 'Ваш логин',
+          data: undefined,
+        },
+        passwd: {
+          caption: 'Ваш пароль',
+          data: undefined,
+        },
+      },
     }
   },
 }
@@ -18,8 +30,13 @@ export default {
 <template>
   <div>
     <section>
+      {{ list }}
       <article>
-        <MForm :skeleton="skeleton" />
+        <MForm
+          :skeleton="skeleton"
+          :struct="struct"
+          @submitted="list.push($event)"
+        />
       </article>
     </section>
   </div>
