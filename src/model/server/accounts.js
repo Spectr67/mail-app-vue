@@ -1,5 +1,6 @@
 import makeId from '../makeId.js'
 import { getAccounts } from './localStorage/accountsStorage.js'
+import { setAccounts } from './localStorage/accountsStorage.js'
 
 // const accounts = []
 
@@ -13,25 +14,26 @@ function createAccount(email, passwd, firstName, lastName) {
     lastName,
   }
 }
-
-function loginAccount(email, passwd, accounts) {
+function loginAccount(email, passwd) {
+  const accounts = getAccounts() || []
   return accounts.find(a => a.email === email && a.passwd === passwd)
-  // getAccounts()
 }
 
-function registerAccount(account, accounts) {
-  const findedAccount = accounts.find(a => a.email === account.email)
-  // const accounts = [] // getAccounts()
+function registerAccount(account) {
+  const accounts = getAccounts() || []
 
+  const findedAccount = accounts.find(a => a.email === account.email)
   if (findedAccount) return false
+
   const acc = createAccount(
     account.email,
     account.passwd || account.password,
     account.firstName,
     account.lastName
   )
+
   accounts.push(acc)
-  // setAccounts(acc)
+  setAccounts(accounts)
   return true
 }
 

@@ -20,7 +20,7 @@ export default {
     onSubmit() {
       const user = loginAccount(this.email, this.password, this.accounts)
       if (user) {
-        this.$emit('userLogin', user)
+        this.$emit('userLogin', { ...user })
       }
     },
   },

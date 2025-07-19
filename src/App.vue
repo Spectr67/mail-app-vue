@@ -36,7 +36,7 @@ export default {
 
 <template>
   {{ accounts }}
-
+  {{ currentUser }}
   <div class="main">
     <div class="form">
       <div class="leftone">

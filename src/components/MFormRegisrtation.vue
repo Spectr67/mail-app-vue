@@ -12,7 +12,6 @@ const initAccount = () => ({
 export default {
   components: { MInput, MButton },
   emits: ['userSubmit', 'serverSubmit'],
-  props: ['accounts'],
   data() {
     return {
       account: initAccount(),
@@ -22,8 +21,8 @@ export default {
   methods: {
     onSubmit() {
       const data = { ...this.account }
-      const response = registerAccount(data, this.accounts)
-      this.$emit('serverSubmit', response)
+      const response = registerAccount(data)
+      this.$emit('serverSubmit', !!response)
       if (response) {
         this.$emit('userSubmit', data)
         this.account = initAccount()
@@ -47,7 +46,7 @@ export default {
       </div>
       <div class="col s6">
         <MInput
-          v-model="account.secondName"
+          v-model="account.lastName"
           caption="Second Name"
           type="text"
           class="validate"
