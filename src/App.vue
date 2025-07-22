@@ -2,6 +2,7 @@
 import MFormLogin from './components/MFormLogin.vue'
 import MFormRegistration from './components/MFormRegisrtation.vue'
 import MForm from './components/MForm.vue'
+import { getAccounts } from './model/server/localStorage/accountsStorage'
 
 export default {
   components: {
@@ -12,7 +13,7 @@ export default {
   data() {
     return {
       serverSubmit: false,
-      accounts: [],
+      accounts: getAccounts(),
       mail: [],
       currentUser: null,
     }
