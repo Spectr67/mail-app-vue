@@ -42,13 +42,13 @@ export default {
     <div class="form">
       <div class="leftone">
         <MFormRegistration
-          @userSubmit="handleUserSubmit"
-          @serverSubmit="handleServerSubmit"
+          @user-submit="handleUserSubmit"
+          @server-submit="handleServerSubmit"
           :accounts="accounts"
         />
       </div>
       <div class="rightone">
-        <MFormLogin @userLogin="handleUserLogin" :accounts="accounts" />
+        <MFormLogin @user-login="handleUserLogin" :accounts="accounts" />
       </div>
     </div>
     <button @click="isShow = !isShow">switch</button>

@@ -1,6 +1,5 @@
 import makeId from '../makeId.js'
-import { getAccounts } from './localStorage/accountsStorage.js'
-import { setAccounts } from './localStorage/accountsStorage.js'
+import { setAccounts, getAccounts } from './localStorage/accountsStorage.js'
 
 // const accounts = []
 

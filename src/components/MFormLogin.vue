@@ -1,5 +1,5 @@
 <script>
-import { loginAccount } from '@/model/server/accounts'
+import { loginAccount } from '@/model/server/interface'
 
 import MInput from './MInput.vue'
 import MButton from './MButton.vue'
