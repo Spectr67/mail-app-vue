@@ -1,19 +1,15 @@
 <script>
 import MFormLogin from './components/MFormLogin.vue'
 import MFormRegistration from './components/MFormRegisrtation.vue'
-import MForm from './components/MForm.vue'
-import { getAccounts } from './model/server/localStorage/accountsStorage'
 
 export default {
   components: {
-    MForm,
     MFormLogin,
     MFormRegistration,
   },
   data() {
     return {
       serverSubmit: false,
-      accounts: getAccounts(),
       mail: [],
       currentUser: null,
     }
@@ -36,7 +32,6 @@ export default {
 </script>
 
 <template>
-  {{ accounts }}
   {{ currentUser }}
   <div class="main">
     <div class="form">
@@ -44,15 +39,12 @@ export default {
         <MFormRegistration
           @user-submit="handleUserSubmit"
           @server-submit="handleServerSubmit"
-          :accounts="accounts"
         />
       </div>
       <div class="rightone">
-        <MFormLogin @user-login="handleUserLogin" :accounts="accounts" />
+        <MFormLogin @user-login="handleUserLogin" />
       </div>
     </div>
-    <button @click="isShow = !isShow">switch</button>
-    <!-- <MTab :list="tabs" @tab-change="activeTab = $event" /> -->
   </div>
 </template>
 

@@ -1,5 +1,5 @@
-import { loginAccount, registerAccount } from '../server/accounts.js'
-import { receiveEmails, sendEmail } from '../server/emails.js'
+import { loginAccount, registerAccount } from './src/model/server/accounts.js'
+import { receiveEmails, sendEmail } from './src/model/server/emails.js'
 
 let onlineAccountA
 let onlineAccountB

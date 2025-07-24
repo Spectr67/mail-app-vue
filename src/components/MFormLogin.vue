@@ -7,7 +7,6 @@ import MButton from './MButton.vue'
 export default {
   components: { MInput, MButton },
   emits: ['userLogin'],
-  props: ['accounts'],
 
   data() {
     return {
@@ -18,7 +17,7 @@ export default {
 
   methods: {
     onSubmit() {
-      const user = loginAccount(this.email, this.password, this.accounts)
+      const user = loginAccount(this.email, this.password)
       if (user) {
         this.$emit('userLogin', { ...user })
       }
