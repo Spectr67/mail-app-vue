@@ -15,11 +15,6 @@ export default {
     }
   },
   methods: {
-    handleUserSubmit(account) {
-      if (this.serverSubmit) {
-        this.accounts.push(account)
-      }
-    },
     handleServerSubmit(response) {
       this.serverSubmit = response
     },
@@ -30,16 +25,12 @@ export default {
   },
 }
 </script>
-
 <template>
   {{ currentUser }}
   <div class="main">
     <div class="form">
       <div class="leftone">
-        <MFormRegistration
-          @user-submit="handleUserSubmit"
-          @server-submit="handleServerSubmit"
-        />
+        <MFormRegistration @server-submit="handleServerSubmit" />
       </div>
       <div class="rightone">
         <MFormLogin @user-login="handleUserLogin" />

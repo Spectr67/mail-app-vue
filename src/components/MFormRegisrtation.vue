@@ -3,10 +3,10 @@ import { registerAccount } from '@/model/server/accounts.js'
 import MInput from './MInput.vue'
 import MButton from './MButton.vue'
 const initAccount = () => ({
-  firstName: 'qqq',
-  lastName: 'www',
-  email: 'eee@eee',
-  password: 'qwe',
+  firstName: '',
+  lastName: '',
+  email: '',
+  password: '',
 })
 
 export default {

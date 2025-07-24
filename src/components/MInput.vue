@@ -18,8 +18,6 @@ export default {
 }
 </script>
 
-Model View ViewModel
-
 <template>
   <div class="input-field">
     <input

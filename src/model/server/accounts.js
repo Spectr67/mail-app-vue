@@ -14,12 +14,12 @@ function createAccount(email, passwd, firstName, lastName) {
   }
 }
 function loginAccount(email, passwd) {
-  const accounts = getAccounts() || []
+  const accounts = getAccounts()
   return accounts.find(a => a.email === email && a.passwd === passwd)
 }
 
 function registerAccount(account) {
-  const accounts = getAccounts() || []
+  const accounts = getAccounts()
 
   const findedAccount = accounts.find(a => a.email === account.email)
   if (findedAccount) return false

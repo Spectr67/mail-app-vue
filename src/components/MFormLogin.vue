@@ -20,6 +20,8 @@ export default {
       const user = loginAccount(this.email, this.password)
       if (user) {
         this.$emit('userLogin', { ...user })
+        this.email = ''
+        this.password = ''
       }
     },
   },
