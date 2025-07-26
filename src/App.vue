@@ -5,11 +5,7 @@ import MFormLogin from './components/MFormLogin.vue'
 import MFormRegistration from './components/MFormRegisrtation.vue'
 import MFormSendEmail from './components/MFormSendEmail.vue'
 import { sendEmail } from './model/server/interface.js'
-import {
-  receiveEmails,
-  receiveIncoming,
-  receiveOutcoming,
-} from './model/server/interface.js'
+import { receiveIncoming, receiveOutcoming } from './model/server/interface.js'
 
 export default {
   components: {
@@ -31,8 +27,8 @@ export default {
       this.currentUser = user
     },
     handleGetEmail() {
-      this.incoming = receiveIncoming(this.currentUser.email)
-      this.outcoming = receiveOutcoming(this.currentUser.email)
+      this.incoming = receiveIncoming(this.currentUser.email).toReversed()
+      this.outcoming = receiveOutcoming(this.currentUser.email).toReversed()
     },
     handleSendEmail(email) {
       sendEmail(
@@ -49,7 +45,6 @@ export default {
 <template>
   {{ currentUser }}
   {{ incoming }}
-  {{ outcoming }}
   <div class="main">
     <div class="form">
       <div class="leftone">
@@ -60,13 +55,31 @@ export default {
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="collection">
-      <MBage :count="incoming.length" caption="Incoming" />
-      <MBage :count="outcoming.length" caption="Outcoming" />
-      <MFormSendEmail @userSendEmail="handleSendEmail" />
+  <div class="form">
+    <div class="leftone">
+      <div class="row">
+        <div class="collection">
+          <MBage :count="incoming.length" caption="Incoming" />
+          <MBage :count="outcoming.length" caption="Outcoming" />
+        </div>
+      </div>
     </div>
-    <MButton caption="get email" @click="handleGetEmail" />
+    <div class="rightone">
+      <MFormSendEmail @userSendEmail="handleSendEmail" />
+      <MButton caption="get email" @click="handleGetEmail" />
+    </div>
+  </div>
+  <div class="form">
+    <div class="leftone">
+      <ul>
+        <li v-for="(item, idx) of incoming" :key="item.id">{{ item }}</li>
+      </ul>
+    </div>
+    <div class="rightone">
+      <ul>
+        <li v-for="(item, idx) of outcoming" :key="item.id">{{ item }}</li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -85,7 +98,7 @@ export default {
 }
 
 .collection {
-  width: 25%;
+  width: 100%;
   height: 450px;
 }
 
