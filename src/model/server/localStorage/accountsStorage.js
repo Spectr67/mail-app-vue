@@ -4,7 +4,7 @@ function setAccounts(accounts) {
 
 function getAccounts() {
   const data = localStorage.getItem('accounts')
-  return JSON.parse(data)
+  return JSON.parse(data) || []
 }
 
 export { setAccounts, getAccounts }

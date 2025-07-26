@@ -1,6 +1,10 @@
 import makeId from '../makeId.js'
-
-const emails = []
+import {
+  getIncoming,
+  getOutcoming,
+  setIncoming,
+  setOutcoming,
+} from './localStorage/emailStorage.js'
 
 function createEmail(sender, recipient, subject, text) {
   return {
@@ -15,10 +19,26 @@ function createEmail(sender, recipient, subject, text) {
 
 function sendEmail(sender, recipient, subject, text) {
   const email = createEmail(sender, recipient, subject, text)
-  emails.push(email)
+
+  const outList = getOutcoming()
+  outList.push(email)
+  setOutcoming(outList)
+
+  const inList = getIncoming()
+  inList.push(email)
+  setIncoming(inList)
 }
 
 function receiveEmails(recipient) {
+  return receiveIncoming(recipient).concat(receiveOutcoming(recipient))
+}
+
+function receiveIncoming(recipient) {
+  const emails = getIncoming()
+  return emails.filter(e => e.recipient === recipient)
+}
+function receiveOutcoming(recipient) {
+  const emails = getOutcoming()
   return emails.filter(e => e.recipient === recipient)
 }
 
@@ -28,7 +48,7 @@ function receiveEmails(recipient) {
 // delete/create
 // remove/add
 
-export { sendEmail, receiveEmails }
+export { sendEmail, receiveEmails, receiveIncoming, receiveOutcoming }
 
 // const email = {
 //   id: 1,

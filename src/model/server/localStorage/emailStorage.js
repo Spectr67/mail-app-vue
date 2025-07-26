@@ -1,10 +1,17 @@
-function setEmails(emails) {
-  localStorage.setItem('emails', JSON.stringify(emails))
+function setIncoming(incoming) {
+  localStorage.setItem('incoming', JSON.stringify(incoming))
+}
+function setOutcoming(outcoming) {
+  localStorage.setItem('outcoming', JSON.stringify(outcoming))
 }
 
-function getEmails() {
-  const data = localStorage.getItem('emails')
-  return JSON.parse(data)
+function getIncoming() {
+  const data = localStorage.getItem('incoming')
+  return JSON.parse(data) || []
+}
+function getOutcoming() {
+  const data = localStorage.getItem('outcoming')
+  return JSON.parse(data) || []
 }
 
-export { setEmails, getEmails }
+export { setIncoming, setOutcoming, getIncoming, getOutcoming }

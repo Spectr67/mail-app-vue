@@ -6,11 +6,11 @@ let onlineAccountB
 let inboxA = []
 let inboxB = []
 
-function loginA(email, passwd) {
-  onlineAccountA = loginAccount(email, passwd)
+function loginA(email, password) {
+  onlineAccountA = loginAccount(email, password)
 }
-function loginB(email, passwd) {
-  onlineAccountB = loginAccount(email, passwd)
+function loginB(email, password) {
+  onlineAccountB = loginAccount(email, password)
 }
 
 function sendA(recipient, subject, text) {

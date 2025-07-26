@@ -5,7 +5,6 @@ export default {
 </script>
 
 <template>
-  {{ icon }}
   <button type="submit" class="waves-effect waves-light btn">
     <i v-if="icon" class="material-icons left">{{ icon }}</i>
     <span>{{ caption }}</span>

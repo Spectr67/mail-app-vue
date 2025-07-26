@@ -1,41 +1,72 @@
 <script>
+import MBage from './components/MBage.vue'
+import MButton from './components/MButton.vue'
 import MFormLogin from './components/MFormLogin.vue'
 import MFormRegistration from './components/MFormRegisrtation.vue'
+import MFormSendEmail from './components/MFormSendEmail.vue'
+import { sendEmail } from './model/server/interface.js'
+import {
+  receiveEmails,
+  receiveIncoming,
+  receiveOutcoming,
+} from './model/server/interface.js'
 
 export default {
   components: {
     MFormLogin,
     MFormRegistration,
+    MBage,
+    MButton,
+    MFormSendEmail,
   },
   data() {
     return {
-      serverSubmit: false,
-      mail: [],
+      incoming: [],
+      outcoming: [],
       currentUser: null,
     }
   },
   methods: {
-    handleServerSubmit(response) {
-      this.serverSubmit = response
-    },
     handleUserLogin(user) {
       this.currentUser = user
-      console.log('User', user)
+    },
+    handleGetEmail() {
+      this.incoming = receiveIncoming(this.currentUser.email)
+      this.outcoming = receiveOutcoming(this.currentUser.email)
+    },
+    handleSendEmail(email) {
+      sendEmail(
+        this.currentUser.email,
+        email.recipient,
+        email.subject,
+        email.text
+      )
+      this.handleGetEmail()
     },
   },
 }
 </script>
 <template>
   {{ currentUser }}
+  {{ incoming }}
+  {{ outcoming }}
   <div class="main">
     <div class="form">
       <div class="leftone">
-        <MFormRegistration @server-submit="handleServerSubmit" />
+        <MFormRegistration />
       </div>
       <div class="rightone">
         <MFormLogin @user-login="handleUserLogin" />
       </div>
     </div>
+  </div>
+  <div class="row">
+    <div class="collection">
+      <MBage :count="incoming.length" caption="Incoming" />
+      <MBage :count="outcoming.length" caption="Outcoming" />
+      <MFormSendEmail @userSendEmail="handleSendEmail" />
+    </div>
+    <MButton caption="get email" @click="handleGetEmail" />
   </div>
 </template>
 

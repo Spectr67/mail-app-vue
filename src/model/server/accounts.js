@@ -1,21 +1,20 @@
 import makeId from '../makeId.js'
 import { setAccounts, getAccounts } from './localStorage/accountsStorage.js'
 
-// const accounts = []
-
-function createAccount(email, passwd, firstName, lastName) {
+function createAccount(email, password, firstName, lastName) {
   return {
     id: makeId(),
     date: Date.now(),
     email,
-    passwd,
+    password,
     firstName,
     lastName,
   }
 }
-function loginAccount(email, passwd) {
+
+function loginAccount(email, password) {
   const accounts = getAccounts()
-  return accounts.find(a => a.email === email && a.passwd === passwd)
+  return accounts.find(a => a.email === email && a.password === password)
 }
 
 function registerAccount(account) {
@@ -26,7 +25,7 @@ function registerAccount(account) {
 
   const acc = createAccount(
     account.email,
-    account.passwd || account.password,
+    account.password,
     account.firstName,
     account.lastName
   )
@@ -37,12 +36,3 @@ function registerAccount(account) {
 }
 
 export { registerAccount, loginAccount }
-
-// const account = {
-//   id: 1,
-//   email: 'foo@bar.com',
-//   passwd: 'qwerty123',
-//   firstName: 'Petya',
-//   lastName: 'Petrov',
-//   date: 123456789,
-// }

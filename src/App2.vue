@@ -7,7 +7,7 @@ export default {
   data() {
     return {
       list: [],
-      skeleton: [{ email: 's12' }, { login: 's6', passwd: 's6' }],
+      skeleton: [{ email: 's12' }, { login: 's6', password: 's6' }],
       struct: {
         email: {
           caption: 'Ваш email',
@@ -17,7 +17,7 @@ export default {
           caption: 'Ваш логин',
           data: undefined,
         },
-        passwd: {
+        password: {
           caption: 'Ваш пароль',
           data: undefined,
         },
