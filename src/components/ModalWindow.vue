@@ -18,8 +18,8 @@ const initUser = () => ({
 })
 
 import MButton from './MButton.vue'
-import MFormRegistration from './MFormRegisrtation.vue'
-import MFormLogin from './MFormLogin.vue'
+import MFormRegistration from './SignUpSubmitter.vue'
+import MFormLogin from './SignInSubmitter.vue'
 
 export default {
   components: { MButton, MFormRegistration, MFormLogin },

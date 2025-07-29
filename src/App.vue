@@ -1,19 +1,19 @@
 <script>
 import MBage from './components/MBage.vue'
 import MButton from './components/MButton.vue'
-import MFormLogin from './components/MFormLogin.vue'
-import MFormRegistration from './components/MFormRegisrtation.vue'
-import MFormSendEmail from './components/MFormSendEmail.vue'
+import SignInSubmitter from './components/SignInSubmitter.vue'
+import SignUpSubmitter from './components/SignUpSubmitter.vue'
+import EmailSubmitter from './components/EmailSubmitter.vue'
 import { sendEmail } from './model/server/interface.js'
 import { receiveIncoming, receiveOutcoming } from './model/server/interface.js'
 
 export default {
   components: {
-    MFormLogin,
-    MFormRegistration,
+    SignInSubmitter,
+    SignUpSubmitter,
     MBage,
     MButton,
-    MFormSendEmail,
+    EmailSubmitter,
   },
   data() {
     return {
@@ -48,10 +48,10 @@ export default {
   <div class="main">
     <div class="form">
       <div class="leftone">
-        <MFormRegistration />
+        <SignUpSubmitter />
       </div>
       <div class="rightone">
-        <MFormLogin @user-login="handleUserLogin" />
+        <SignInSubmitter @user-login="handleUserLogin" />
       </div>
     </div>
   </div>
@@ -65,7 +65,7 @@ export default {
       </div>
     </div>
     <div class="rightone">
-      <MFormSendEmail @userSendEmail="handleSendEmail" />
+      <EmailSubmitter @userSendEmail="handleSendEmail" />
       <MButton caption="get email" @click="handleGetEmail" />
     </div>
   </div>

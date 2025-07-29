@@ -55,8 +55,13 @@ export default {
     </div>
 
     <div class="modal-footer">
-      <MButton type="submit" caption="Отмена" />
+      <MButton type="submit" caption="Отмена" class="mr-10" />
       <MButton type="submit" caption="Отправить" />
     </div>
   </form>
 </template>
+<style scoped>
+.mr-10 {
+  margin-right: 10px;
+}
+</style>

@@ -17,9 +17,9 @@ export default {
 
   methods: {
     onSubmit() {
-      const user = loginAccount(this.email, this.password)
-      if (user) {
-        this.$emit('userLogin', { ...user })
+      const account = loginAccount(this.email, this.password)
+      if (account) {
+        this.$emit('userLogin', { ...account })
         this.email = ''
         this.password = ''
       }
@@ -52,8 +52,13 @@ export default {
     </div>
 
     <div class="modal-footer">
-      <MButton caption="Cancel" />
+      <MButton caption="Cancel" class="mr-10" />
       <MButton caption="Submit" />
     </div>
   </form>
 </template>
+<style scoped>
+.mr-10 {
+  margin-right: 10px;
+}
+</style>
