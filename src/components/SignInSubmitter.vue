@@ -1,8 +1,8 @@
 <script>
 import { loginAccount } from '@/model/server/interface'
 
-import MInput from './MInput.vue'
-import MButton from './MButton.vue'
+import MInput from '../ui/MInput.vue'
+import MButton from '../ui/MButton.vue'
 
 export default {
   components: { MInput, MButton },

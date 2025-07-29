@@ -1,7 +1,7 @@
 <script>
 import { registerAccount } from '@/model/server/accounts.js'
-import MInput from './MInput.vue'
-import MButton from './MButton.vue'
+import MInput from '../ui/MInput.vue'
+import MButton from '../ui/MButton.vue'
 const initAccount = () => ({
   firstName: '',
   lastName: '',

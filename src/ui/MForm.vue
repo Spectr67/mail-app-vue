@@ -1,9 +1,11 @@
 <script>
 import MButton from './MButton.vue'
 import MInput from './MInput.vue'
+import MSwitch from './MSwitch.vue'
+import MCheckBox from './MCheckBox.vue'
 
 export default {
-  components: { MInput, MButton },
+  components: { MInput, MButton, MSwitch, MCheckBox },
 
   props: ['skeleton', 'struct'],
 
@@ -15,33 +17,30 @@ export default {
     }
   },
 
-  watch: {
-    struct(val) {
-      this.localStruct = JSON.parse(JSON.stringify(val))
-    },
-  },
-
   methods: {
     submit() {
       this.$emit('submitted', JSON.parse(JSON.stringify(this.localStruct)))
       this.localStruct = JSON.parse(JSON.stringify(this.struct))
+      const x = {
+        email: 'alex@gmail.com',
+        login: 'alex',
+        passwd: 'qwerty',
+      }
     },
   },
 }
 </script>
 
 <template>
-  {{ struct }}
   <form class="container" @submit.prevent="submit">
     <div v-for="(row, idx) of skeleton" :key="idx" class="row">
       <div v-for="(col, key) of row" :key="key" class="col" :class="col">
-        {{ key }}
-        <MInput
-          :placeholder="col"
+        <component
+          :is="localStruct[key].component"
           :caption="localStruct[key].caption"
+          v-model="localStruct[key].data"
           type="text"
           class="validate"
-          v-model="localStruct[key].data"
           required
         />
       </div>

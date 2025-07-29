@@ -1,5 +1,5 @@
 <script>
-import MForm from './components/MForm.vue'
+import MForm from './ui/MForm.vue'
 
 export default {
   components: { MForm },
@@ -10,16 +10,22 @@ export default {
       skeleton: [{ email: 's12' }, { login: 's6', password: 's6' }],
       struct: {
         email: {
+          col: 's12',
           caption: 'Ваш email',
           data: undefined,
+          component: 'MInput',
         },
         login: {
+          col: 's6',
           caption: 'Ваш логин',
           data: undefined,
+          component: 'MCheckBox',
         },
         password: {
+          col: 's6',
           caption: 'Ваш пароль',
           data: undefined,
+          component: 'MSwitch',
         },
       },
     }
@@ -30,7 +36,7 @@ export default {
 <template>
   <div>
     <section>
-      {{ list }}
+      <!-- {{ list }} -->
       <article>
         <MForm
           :skeleton="skeleton"
@@ -40,4 +46,5 @@ export default {
       </article>
     </section>
   </div>
+  <button @click="struct.password.data = true">OK!</button>
 </template>

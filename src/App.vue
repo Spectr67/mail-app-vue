@@ -1,6 +1,6 @@
 <script>
-import MBage from './components/MBage.vue'
-import MButton from './components/MButton.vue'
+import MBage from './ui/MBage.vue'
+import MButton from './ui/MButton.vue'
 import SignInSubmitter from './components/SignInSubmitter.vue'
 import SignUpSubmitter from './components/SignUpSubmitter.vue'
 import EmailSubmitter from './components/EmailSubmitter.vue'
