@@ -2,7 +2,7 @@
 const randId = () => 'id_' + Math.trunc(Math.random() * 0xff ** 4).toString(16)
 
 export default {
-  props: ['modelValue', 'caption'],
+  props: ['modelValue', 'caption', 'type'],
 
   emits: ['update:modelValue'],
 
@@ -24,7 +24,7 @@ export default {
       ref="elInput"
       :value="modelValue"
       @input="$emit('update:modelValue', $event.target.value)"
-      type="text"
+      :type="type"
       class="validate"
       :id="instanceId"
     />

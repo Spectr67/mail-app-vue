@@ -19,13 +19,15 @@ export default {
 
   methods: {
     submit() {
-      this.$emit('submitted', JSON.parse(JSON.stringify(this.localStruct)))
-      this.localStruct = JSON.parse(JSON.stringify(this.struct))
-      const x = {
-        email: 'alex@gmail.com',
-        login: 'alex',
-        passwd: 'qwerty',
+      const result = {}
+
+      for (const key in this.localStruct) {
+        result[key] = this.localStruct[key].data
       }
+
+      this.$emit('submitted', result)
+      console.log(result)
+      this.localStruct = JSON.parse(JSON.stringify(this.struct))
     },
   },
 }

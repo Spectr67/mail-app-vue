@@ -19,13 +19,13 @@ export default {
           col: 's6',
           caption: 'Ваш логин',
           data: undefined,
-          component: 'MCheckBox',
+          component: 'MInput',
         },
         password: {
           col: 's6',
           caption: 'Ваш пароль',
           data: undefined,
-          component: 'MSwitch',
+          component: 'MInput',
         },
       },
     }
