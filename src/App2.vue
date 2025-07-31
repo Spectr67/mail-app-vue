@@ -1,8 +1,9 @@
 <script>
 import MForm from './ui/MForm.vue'
+import MtextArea from './ui/MTextArea.vue'
 
 export default {
-  components: { MForm },
+  components: { MForm, MtextArea },
 
   data() {
     return {
@@ -47,4 +48,5 @@ export default {
     </section>
   </div>
   <button @click="struct.password.data = true">OK!</button>
+  <MtextArea />
 </template>
