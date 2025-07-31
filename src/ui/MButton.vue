@@ -12,7 +12,7 @@ export default {
 </template>
 
 <style scoped>
-a {
+button {
   margin: 0 5px;
 }
 </style>

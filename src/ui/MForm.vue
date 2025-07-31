@@ -3,11 +3,19 @@ import MButton from './MButton.vue'
 import MInput from './MInput.vue'
 import MSwitch from './MSwitch.vue'
 import MCheckBox from './MCheckBox.vue'
+import MTextarea from './MTextarea.vue'
 
 export default {
-  components: { MInput, MButton, MSwitch, MCheckBox },
+  components: { MInput, MButton, MSwitch, MCheckBox, MTextarea },
 
-  props: ['skeleton', 'struct'],
+  props: [
+    'skeleton',
+    'struct',
+    'confirmCaption',
+    'confirmIcon',
+    'discardCaption',
+    'discardIcon',
+  ],
 
   emits: ['submitted'],
 
@@ -49,6 +57,7 @@ export default {
     </div>
     <div>
       <MButton caption="Войти" icon="login" />
+      <MButton v-if="discardCaption" caption="Войти" icon="login" />
     </div>
   </form>
 </template>

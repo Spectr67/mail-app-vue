@@ -1,14 +1,18 @@
 <script>
 import MForm from './ui/MForm.vue'
-import MtextArea from './ui/MTextArea.vue'
+import MTextarea from './ui/MTextarea.vue'
 
 export default {
-  components: { MForm, MtextArea },
+  components: { MForm },
 
   data() {
     return {
       list: [],
-      skeleton: [{ email: 's12' }, { login: 's6', password: 's6' }],
+      skeleton: [
+        { email: 's12' },
+        { login: 's6', password: 's6' },
+        { text: 's12' },
+      ],
       struct: {
         email: {
           col: 's12',
@@ -27,6 +31,12 @@ export default {
           caption: 'Ваш пароль',
           data: undefined,
           component: 'MInput',
+        },
+        text: {
+          col: 's6',
+          caption: 'Ваш текст',
+          data: undefined,
+          component: 'MTextarea',
         },
       },
     }
@@ -48,5 +58,5 @@ export default {
     </section>
   </div>
   <button @click="struct.password.data = true">OK!</button>
-  <MtextArea />
+  <MTextarea />
 </template>
