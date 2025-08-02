@@ -1,12 +1,17 @@
 <script>
 import MForm from './ui/MForm.vue'
+import MSelect from './ui/MSelect.vue'
 
 export default {
-  components: { MForm },
+  components: { MForm, MSelect },
 
   data() {
     return {
-      list: [],
+      list: [
+        { caption: 'hello', value: '1' },
+        { caption: 'world', value: '2' },
+        { caption: 'my', value: '3' },
+      ],
       skeleton: [
         { email: 's12' },
         { login: 's6', password: 's6' },
@@ -46,14 +51,17 @@ export default {
 <template>
   <div>
     <section>
-      <!-- {{ list }} -->
       <article>
+        <MSelect :list="list" name="Select" />
+      </article>
+      <!-- {{ list }} -->
+      <!-- <article>
         <MForm
           :skeleton="skeleton"
           :struct="struct"
           @submitted="list.push($event)"
         />
-      </article>
+      </article> -->
     </section>
   </div>
   <button @click="struct.password.data = true">OK!</button>
