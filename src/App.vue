@@ -4,8 +4,10 @@ import MButton from './ui/MButton.vue'
 import SignInSubmitter from './components/SignInSubmitter.vue'
 import SignUpSubmitter from './components/SignUpSubmitter.vue'
 import EmailSubmitter from './components/EmailSubmitter.vue'
+import { loginAccount } from '@/model/server/interface'
 import { sendEmail } from './model/server/interface.js'
 import { receiveIncoming, receiveOutcoming } from './model/server/interface.js'
+import SignInSubmitterMigrate from './components/SignInSubmitter-migrate.vue'
 
 export default {
   components: {
@@ -14,6 +16,7 @@ export default {
     MBage,
     MButton,
     EmailSubmitter,
+    SignInSubmitterMigrate,
   },
   data() {
     return {
@@ -24,7 +27,11 @@ export default {
   },
   methods: {
     handleUserLogin(user) {
-      this.currentUser = user
+      const account = loginAccount(user.email, user.password)
+      if (account) {
+        this.$emit('userLogin', { ...account })
+        this.currentUser = account
+      }
     },
     handleGetEmail() {
       this.incoming = receiveIncoming(this.currentUser.email).toReversed()
@@ -51,7 +58,7 @@ export default {
         <SignUpSubmitter />
       </div>
       <div class="rightone">
-        <SignInSubmitter @user-login="handleUserLogin" />
+        <SignInSubmitterMigrate @user-login="handleUserLogin" />
       </div>
     </div>
   </div>

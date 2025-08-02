@@ -3,10 +3,9 @@ import MButton from './MButton.vue'
 import MInput from './MInput.vue'
 import MSwitch from './MSwitch.vue'
 import MCheckBox from './MCheckBox.vue'
-import MTextarea from './MTextarea.vue'
 
 export default {
-  components: { MInput, MButton, MSwitch, MCheckBox, MTextarea },
+  components: { MInput, MButton, MSwitch, MCheckBox },
 
   props: [
     'skeleton',
@@ -27,14 +26,12 @@ export default {
 
   methods: {
     submit() {
-      const result = {}
+      let account = Object.fromEntries(
+        Object.entries(this.localStruct).map(([key, { data }]) => [key, data])
+      )
 
-      for (const key in this.localStruct) {
-        result[key] = this.localStruct[key].data
-      }
-
-      this.$emit('submitted', result)
-      console.log(result)
+      this.$emit('submitted', account)
+      console.log(account)
       this.localStruct = JSON.parse(JSON.stringify(this.struct))
     },
   },
@@ -49,21 +46,25 @@ export default {
           :is="localStruct[key].component"
           :caption="localStruct[key].caption"
           v-model="localStruct[key].data"
-          type="text"
+          :type="localStruct[key].type"
           class="validate"
           required
         />
       </div>
     </div>
     <div>
-      <MButton caption="Войти" icon="login" />
-      <MButton v-if="discardCaption" caption="Войти" icon="login" />
+      <MButton :caption="confirmCaption" :icon="confirmIcon" />
+      <MButton
+        v-if="discardCaption"
+        :caption="discardCaption"
+        :icon="discardIcon"
+      />
     </div>
   </form>
 </template>
 
-<style>
-/* div {
-  border: 1px solid #000;
-} */
+<style scoped>
+div {
+  border: 1px solid fuchsia;
+}
 </style>

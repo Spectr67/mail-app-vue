@@ -1,6 +1,5 @@
 <script>
 import MForm from './ui/MForm.vue'
-import MTextarea from './ui/MTextarea.vue'
 
 export default {
   components: { MForm },

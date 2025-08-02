@@ -24,7 +24,7 @@ export default {
       ref="elInput"
       :value="modelValue"
       @input="$emit('update:modelValue', $event.target.value)"
-      :type="type"
+      :type="type || 'text'"
       class="validate"
       :id="instanceId"
     />

@@ -1,65 +1,54 @@
 <script>
 import MForm from '@/ui/MForm.vue'
-import { loginAccount } from '@/model/server/interface'
-
 export default {
-  components: { MInput, MButton, MForm },
+  components: { MForm },
 
   emits: ['userLogin'],
 
   data() {
     return {
-      email: '',
-      password: '',
+      list: [],
+      skeleton: [{ email: 's12' }, { password: 's12' }],
+      struct: {
+        email: {
+          col: 's12',
+          caption: 'Email',
+          // type: 'email',
+          data: undefined,
+          component: 'MInput',
+        },
+        password: {
+          col: 's12',
+          caption: 'Passworld',
+          type: 'password',
+          data: undefined,
+          component: 'MInput',
+        },
+      },
+      confirmCaption: 'Login',
+      confirmIcon: 'login',
+      discardCaption: 'Exit',
+      discardIcon: 'close',
     }
   },
 
   methods: {
-    onSubmit() {
-      const account = loginAccount(this.email, this.password)
-      if (account) {
-        this.$emit('userLogin', { ...account })
-        this.email = ''
-        this.password = ''
-      }
+    handleLogin(data) {
+      this.$emit('userLogin', { ...data })
     },
   },
 }
 </script>
 
 <template>
-  <MForm />
-
-  <form class="container" @submit.prevent="onSubmit">
-    <div class="row">
-      <div class="col s12">
-        <MInput
-          v-model="email"
-          caption="Email"
-          type="email"
-          class="validate"
-          required
-        />
-      </div>
-      <div class="col s12">
-        <MInput
-          v-model="password"
-          caption="Password"
-          type="password"
-          class="validate"
-          required
-        />
-      </div>
-    </div>
-
-    <div class="modal-footer">
-      <MButton caption="Cancel" class="mr-10" />
-      <MButton caption="Submit" />
-    </div>
-  </form>
+  {{ list }}
+  <MForm
+    :skeleton="skeleton"
+    :struct="struct"
+    :confirmCaption="confirmCaption"
+    :confirmIcon="confirmIcon"
+    :discardCaption="discardCaption"
+    :discardIcon="discardIcon"
+    @userLogin="handleLogin"
+  />
 </template>
-<style scoped>
-.mr-10 {
-  margin-right: 10px;
-}
-</style>
