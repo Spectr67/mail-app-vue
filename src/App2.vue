@@ -7,6 +7,8 @@ export default {
 
   data() {
     return {
+      selectedDish: '',
+      availableDishes: ['борщ', 'суп', 'макароны', 'пельмени', 'картоха'],
       list: [
         { caption: 'hello', value: '1' },
         { caption: 'world', value: '2' },
@@ -51,8 +53,13 @@ export default {
 <template>
   <div>
     <section>
+      <h1 @click="selectedDish = 'макароны'">{{ selectedDish }}</h1>
       <article>
-        <MSelect :list="list" name="Select" />
+        <MSelect
+          :list="availableDishes"
+          caption="Select"
+          :model-value="selectedDish"
+        />
       </article>
       <!-- {{ list }} -->
       <!-- <article>
@@ -64,6 +71,6 @@ export default {
       </article> -->
     </section>
   </div>
-  <button @click="struct.password.data = true">OK!</button>
+  <button @click="selectedDish = 'макароны'">OK!</button>
   <MTextarea />
 </template>

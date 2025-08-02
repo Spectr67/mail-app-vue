@@ -1,10 +1,10 @@
 <script>
 export default {
-  props: ['list', 'name', 'modelValue'],
+  props: ['list', 'caption', 'modelValue'],
   emits: ['update:modelValue'],
   mounted() {
-    const el = this.$refs.select
-    M.FormSelect.init(el)
+    const elSelect = this.$refs.elSelect
+    M.FormSelect.init(elSelect)
   },
 }
 </script>
@@ -12,15 +12,21 @@ export default {
 <template>
   <div class="input-field">
     <select
-      ref="select"
+      ref="elSelect"
       :value="modelValue"
-      @change="$emit('update:modelValue', event.target.value)"
+      @change="$emit('update:modelValue', $event.target.value)"
     >
-      <option value="" disabled selected>{{ name }}</option>
-      <option v-for="(item, idx) in list" :key="idx" :value="item.value">
-        {{ item.caption }}
+      <option value="" disabled hidden>{{ caption }}</option>
+      <option
+        :selected="modelValue === item"
+        v-for="(item, idx) in list"
+        :key="idx"
+        :value="item"
+      >
+        {{ item }}
       </option>
     </select>
-    <label>{{ name }}</label>
+    {{ modelValue }}
   </div>
 </template>
+<!-- selected -->
