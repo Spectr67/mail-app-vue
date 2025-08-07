@@ -3,7 +3,7 @@ import MForm from '@/ui/MForm.vue'
 export default {
   components: { MForm },
 
-  emits: ['userLogin'],
+  emits: ['submitted'],
 
   data() {
     return {
@@ -31,12 +31,6 @@ export default {
       discardIcon: 'close',
     }
   },
-
-  methods: {
-    handleLogin(data) {
-      this.$emit('userLogin', { ...data })
-    },
-  },
 }
 </script>
 
@@ -45,10 +39,10 @@ export default {
   <MForm
     :skeleton="skeleton"
     :struct="struct"
-    :confirmCaption="confirmCaption"
-    :confirmIcon="confirmIcon"
-    :discardCaption="discardCaption"
-    :discardIcon="discardIcon"
-    @userLogin="handleLogin"
+    :confirm-caption="confirmCaption"
+    :confirm-icon="confirmIcon"
+    :discard-caption="discardCaption"
+    :discard-icon="discardIcon"
+    @submitted="$emit('submitted', { ...$event })"
   />
 </template>

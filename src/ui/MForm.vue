@@ -29,9 +29,7 @@ export default {
       let account = Object.fromEntries(
         Object.entries(this.localStruct).map(([key, { data }]) => [key, data])
       )
-
       this.$emit('submitted', account)
-      console.log(account)
       this.localStruct = JSON.parse(JSON.stringify(this.struct))
     },
   },

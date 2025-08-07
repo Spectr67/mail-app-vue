@@ -27,6 +27,7 @@ export default {
       :type="type || 'text'"
       class="validate"
       :id="instanceId"
+      autocomplete="on"
     />
     <label
       :class="{ active: modelValue !== '' }"

@@ -18,6 +18,7 @@ export default {
     EmailSubmitter,
     SignInSubmitterMigrate,
   },
+
   data() {
     return {
       incoming: [],
@@ -58,7 +59,7 @@ export default {
         <SignUpSubmitter />
       </div>
       <div class="rightone">
-        <SignInSubmitterMigrate @user-login="handleUserLogin" />
+        <SignInSubmitterMigrate @submitted="handleUserLogin" />
       </div>
     </div>
   </div>
