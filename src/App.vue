@@ -1,22 +1,21 @@
 <script>
 import MBage from './ui/MBage.vue'
 import MButton from './ui/MButton.vue'
-import SignInSubmitter from './components/SignInSubmitter.vue'
-import SignUpSubmitter from './components/SignUpSubmitter.vue'
 import EmailSubmitter from './components/EmailSubmitter.vue'
 import { loginAccount } from '@/model/server/interface'
 import { sendEmail } from './model/server/interface.js'
+import { registerAccount } from '@/model/server/accounts.js'
 import { receiveIncoming, receiveOutcoming } from './model/server/interface.js'
 import SignInSubmitterMigrate from './components/SignInSubmitter-migrate.vue'
+import SignUpSubmitterMigrate from './components/SignUpSubmitter-migrate.vue'
 
 export default {
   components: {
-    SignInSubmitter,
-    SignUpSubmitter,
     MBage,
     MButton,
     EmailSubmitter,
     SignInSubmitterMigrate,
+    SignUpSubmitterMigrate,
   },
 
   data() {
@@ -47,6 +46,12 @@ export default {
       )
       this.handleGetEmail()
     },
+    handleUserRegister(userData) {
+      const response = registerAccount(userData)
+      if (response) {
+        console.log('welcome')
+      }
+    },
   },
 }
 </script>
@@ -56,7 +61,7 @@ export default {
   <div class="main">
     <div class="form">
       <div class="leftone">
-        <SignUpSubmitter />
+        <SignUpSubmitterMigrate @submitted="handleUserRegister" />
       </div>
       <div class="rightone">
         <SignInSubmitterMigrate @submitted="handleUserLogin" />
