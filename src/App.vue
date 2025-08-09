@@ -8,6 +8,7 @@ import { registerAccount } from '@/model/server/accounts.js'
 import { receiveIncoming, receiveOutcoming } from './model/server/interface.js'
 import SignInSubmitterMigrate from './components/SignInSubmitter-migrate.vue'
 import SignUpSubmitterMigrate from './components/SignUpSubmitter-migrate.vue'
+import EmailSubmitterMigrate from './components/EmailSubmitter-migrate.vue'
 
 export default {
   components: {
@@ -16,6 +17,7 @@ export default {
     EmailSubmitter,
     SignInSubmitterMigrate,
     SignUpSubmitterMigrate,
+    EmailSubmitterMigrate,
   },
 
   data() {
@@ -78,7 +80,7 @@ export default {
       </div>
     </div>
     <div class="rightone">
-      <EmailSubmitter @userSendEmail="handleSendEmail" />
+      <EmailSubmitterMigrate @submitted="handleSendEmail" />
       <MButton caption="get email" @click="handleGetEmail" />
     </div>
   </div>

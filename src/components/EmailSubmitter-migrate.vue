@@ -1,51 +1,39 @@
 <script>
 import MForm from '@/ui/MForm.vue'
+
 export default {
   components: { MForm },
-
   emits: ['submitted'],
 
   data() {
     return {
-      skeleton: [
-        { email: 's6' },
-        { password: 's6' },
-        { firstName: 's6' },
-        { lastName: 's6' },
-      ],
+      skeleton: [{ recipient: 's12' }, { subject: 's12' }, { text: 's12' }],
       struct: {
-        email: {
-          col: 's6',
-          caption: 'Email',
-          // type: 'email',
-          data: undefined,
-          component: 'MInput',
-        },
-        password: {
-          col: 's6',
-          caption: 'Passworld',
-          type: 'password',
-          data: undefined,
-          component: 'MInput',
-        },
-        firstName: {
-          col: 's6',
-          caption: 'First Name',
+        recipient: {
+          col: 's12',
+          caption: 'recipient',
           type: 'text',
           data: undefined,
           component: 'MInput',
         },
-        lastName: {
-          col: 's6',
-          caption: 'Last Name',
+        subject: {
+          col: 's12',
+          caption: 'subject',
+          type: 'text',
+          data: undefined,
+          component: 'MInput',
+        },
+        text: {
+          col: 's12',
+          caption: 'text',
           type: 'text',
           data: undefined,
           component: 'MInput',
         },
       },
-      confirmCaption: 'Registrate',
-      confirmIcon: 'login',
-      discardCaption: 'Exit',
+      confirmCaption: 'Send',
+      confirmIcon: 'send',
+      discardCaption: 'Back',
       discardIcon: 'close',
     }
   },
