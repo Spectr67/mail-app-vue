@@ -19,7 +19,7 @@ export default {
         },
         password: {
           col: 's12',
-          caption: 'Passworld',
+          caption: 'Password',
           type: 'password',
           data: undefined,
           component: 'MInput',

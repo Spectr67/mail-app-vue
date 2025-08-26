@@ -2,13 +2,16 @@
 import MBage from './ui/MBage.vue'
 import MButton from './ui/MButton.vue'
 import EmailSubmitter from './components/EmailSubmitter.vue'
-import { loginAccount } from '@/model/server/interface'
-import { sendEmail } from './model/server/interface.js'
-import { registerAccount } from '@/model/server/accounts.js'
-import { receiveIncoming, receiveOutcoming } from './model/server/interface.js'
 import SignInSubmitterMigrate from './components/SignInSubmitter-migrate.vue'
 import SignUpSubmitterMigrate from './components/SignUpSubmitter-migrate.vue'
 import EmailSubmitterMigrate from './components/EmailSubmitter-migrate.vue'
+import {
+  receiveIncoming,
+  receiveOutcoming,
+  loginAccount,
+  sendEmail,
+  registerAccount,
+} from './model/server/interface.js'
 
 export default {
   components: {

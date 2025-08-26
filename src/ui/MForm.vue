@@ -60,9 +60,3 @@ export default {
     </div>
   </form>
 </template>
-
-<style scoped>
-div {
-  border: 1px solid fuchsia;
-}
-</style>

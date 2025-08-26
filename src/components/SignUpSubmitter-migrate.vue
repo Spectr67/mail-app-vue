@@ -8,10 +8,10 @@ export default {
   data() {
     return {
       skeleton: [
-        { email: 's6' },
-        { password: 's6' },
-        { firstName: 's6' },
-        { lastName: 's6' },
+        { email: 's6', password: 's6' },
+        // { password: 's6' },
+        { firstName: 's6', lastName: 's6' },
+        // { lastName: 's6' },
       ],
       struct: {
         email: {
@@ -23,7 +23,7 @@ export default {
         },
         password: {
           col: 's6',
-          caption: 'Passworld',
+          caption: 'Password',
           type: 'password',
           data: undefined,
           component: 'MInput',
