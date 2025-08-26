@@ -1,7 +1,8 @@
 <script>
-import MForm from '@/ui/MForm.vue'
+import WrapForm from './WrapForm.vue'
+
 export default {
-  components: { MForm },
+  components: { WrapForm },
 
   emits: ['submitted'],
 
@@ -36,7 +37,7 @@ export default {
 
 <template>
   {{ list }}
-  <MForm
+  <WrapForm
     :skeleton="skeleton"
     :struct="struct"
     :confirm-caption="confirmCaption"
