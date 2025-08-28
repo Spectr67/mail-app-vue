@@ -1,7 +1,14 @@
 <script>
-import { BTabs, BTab, BButton } from 'bootstrap-vue-next'
+import {
+  BTabs,
+  BTab,
+  BButton,
+  BButtonGroup,
+  BButtonToolbar,
+} from 'bootstrap-vue-next'
 import SignInSubmitterMigrate from './SignInSubmitter-migrate.vue'
 import SignUpSubmitterMigrate from './SignUpSubmitter-migrate.vue'
+import WrapVerticalTab from './WrapVerticalTab.vue'
 
 export default {
   components: {
@@ -10,12 +17,16 @@ export default {
     BButton,
     SignInSubmitterMigrate,
     SignUpSubmitterMigrate,
+    WrapVerticalTab,
+    BButtonGroup,
+    BButtonToolbar,
   },
   emits: ['register', 'login', 'logout'],
-  props: ['currentUser'],
+  props: ['currentUser', 'incoming', 'outcoming'],
   data() {
     return {
       tabIndex: 0,
+      title: this.currentUser,
     }
   },
   methods: {
@@ -32,7 +43,6 @@ export default {
 
     logout() {
       this.$emit('logout')
-      console.log(this.currentUser)
       this.regEmail = ''
       this.regPassword = ''
       this.loginEmail = ''
@@ -76,9 +86,29 @@ export default {
 
     <BTab title="email" :disabled="!currentUser">
       <div class="p-3">
-        <h3 v-if="currentUser">Здравствуйте, {{ currentUser.email }}!</h3>
-        <BButton variant="danger" @click="logout">Выйти</BButton>
+        <div>
+          <BButtonToolbar justify aria-label="Toolbar with justify">
+            <BButtonGroup class="mx-1">
+              <BButton>New</BButton>
+              <BButton v-if="currentUser">{{ currentUser.firstName }}</BButton>
+            </BButtonGroup>
+            <BButtonGroup class="mx-1">
+              <BButton>Save</BButton>
+              <BButton variant="danger" @click="logout">Выйти</BButton>
+            </BButtonGroup>
+          </BButtonToolbar>
+        </div>
+        <WrapVerticalTab />
       </div>
     </BTab>
   </BTabs>
 </template>
+
+<!-- <BTab
+  :title="currentUser ? currentUser.firstName : ''"
+  :disabled="!currentUser"
+>
+  <div class="p-3">
+    <BButton variant="danger" @click="logout">Выйти</BButton>
+  </div>
+</BTab> -->

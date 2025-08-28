@@ -80,6 +80,8 @@ export default {
       />
     </div>
   </div>
+  <!-- :inconimg="incoming"
+    :outcoming="outcoming" -->
   <!-- <div class="form">
     <div class="leftone">
       <ul>
