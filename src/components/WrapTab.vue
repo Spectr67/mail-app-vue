@@ -89,7 +89,7 @@ export default {
         <div>
           <BButtonToolbar justify aria-label="Toolbar with justify">
             <BButtonGroup class="mx-1">
-              <BButton>New</BButton>
+              <BButton @click="$emit('open-email-form')">New</BButton>
               <BButton @click="$emit('getemail')">Get mail</BButton>
               <BButton v-if="currentUser">{{ currentUser.firstName }}</BButton>
             </BButtonGroup>

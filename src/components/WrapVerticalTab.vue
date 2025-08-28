@@ -1,6 +1,7 @@
 <script>
 import { BButton, BCard, BCardBody, BTab, BTabs } from 'bootstrap-vue-next'
 import WrapAccordion from './WrapAccordion.vue'
+import EmailSubmitterMigrate from './EmailSubmitter-migrate.vue'
 
 export default {
   components: {
@@ -10,6 +11,7 @@ export default {
     BTabs,
     BButton,
     WrapAccordion,
+    EmailSubmitterMigrate,
   },
   props: ['incoming', 'outcoming'],
 }
@@ -17,6 +19,10 @@ export default {
 <template>
   <BCard no-body class="tabs-container">
     <BTabs pills card vertical nav-wrapper-class="w-50">
+      <BTab title="open-form" active
+        ><BCardBody><EmailSubmitterMigrate /></BCardBody
+      ></BTab>
+
       <BTab title="incoming" active
         ><BCardBody
           ><WrapAccordion :emails="incoming"></WrapAccordion></BCardBody

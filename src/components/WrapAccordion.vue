@@ -24,8 +24,9 @@ export default {
 </script>
 
 <template>
-  <BAccordion>
+  <BAccordion class="col-12">
     <BAccordionItem
+      class="col-12"
       v-for="(email, index) in emails"
       :key="index"
       :id="'email-' + index"
