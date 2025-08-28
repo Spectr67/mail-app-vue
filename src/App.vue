@@ -4,6 +4,7 @@ import MButton from './ui/MButton.vue'
 import SignInSubmitterMigrate from './components/SignInSubmitter-migrate.vue'
 import SignUpSubmitterMigrate from './components/SignUpSubmitter-migrate.vue'
 import EmailSubmitterMigrate from './components/EmailSubmitter-migrate.vue'
+import WrapTab from './components/WrapTab.vue'
 import {
   receiveIncoming,
   receiveOutcoming,
@@ -11,6 +12,7 @@ import {
   sendEmail,
   registerAccount,
 } from './model/server/interface.js'
+import WrapVerticalTab from './components/WrapVerticalTab.vue'
 
 export default {
   components: {
@@ -19,6 +21,8 @@ export default {
     SignInSubmitterMigrate,
     SignUpSubmitterMigrate,
     EmailSubmitterMigrate,
+    WrapTab,
+    WrapVerticalTab,
   },
 
   data() {
@@ -36,6 +40,16 @@ export default {
         this.currentUser = account
       }
     },
+    handleUserRegister(userData) {
+      const response = registerAccount(userData)
+      if (response) {
+        console.log('welcome')
+      }
+    },
+    handleUserLogout() {
+      this.currentUser = null
+    },
+
     handleGetEmail() {
       this.incoming = receiveIncoming(this.currentUser.email).toReversed()
       this.outcoming = receiveOutcoming(this.currentUser.email).toReversed()
@@ -49,12 +63,6 @@ export default {
       )
       this.handleGetEmail()
     },
-    handleUserRegister(userData) {
-      const response = registerAccount(userData)
-      if (response) {
-        console.log('welcome')
-      }
-    },
   },
 }
 </script>
@@ -62,30 +70,17 @@ export default {
   {{ currentUser }}
   {{ incoming }}
   <div class="main">
-    <div class="form">
-      <div class="leftone">
-        <SignUpSubmitterMigrate @submitted="handleUserRegister" />
-      </div>
-      <div class="rightone">
-        <SignInSubmitterMigrate @submitted="handleUserLogin" />
-      </div>
+    <!-- <WrapVerticalTab /> -->
+    <div>
+      <WrapTab
+        @register="handleUserRegister($event)"
+        @login="handleUserLogin($event)"
+        @logout="handleUserLogout"
+        :currentUser="currentUser"
+      />
     </div>
   </div>
-  <div class="form">
-    <div class="leftone">
-      <div class="row">
-        <div class="collection">
-          <MBage :count="incoming.length" caption="Incoming" />
-          <MBage :count="outcoming.length" caption="Outcoming" />
-        </div>
-      </div>
-    </div>
-    <div class="rightone">
-      <EmailSubmitterMigrate @submitted="handleSendEmail" />
-      <MButton caption="get email" @click="handleGetEmail" />
-    </div>
-  </div>
-  <div class="form">
+  <!-- <div class="form">
     <div class="leftone">
       <ul>
         <li v-for="(item, idx) of incoming" :key="item.id">{{ item }}</li>
@@ -96,7 +91,7 @@ export default {
         <li v-for="(item, idx) of outcoming" :key="item.id">{{ item }}</li>
       </ul>
     </div>
-  </div>
+  </div> -->
 </template>
 
 <style scoped>

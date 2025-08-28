@@ -8,7 +8,6 @@ export default {
 
   data() {
     return {
-      list: [],
       skeleton: [{ email: 's12' }, { password: 's12' }],
       struct: {
         email: {
@@ -36,7 +35,6 @@ export default {
 </script>
 
 <template>
-  {{ list }}
   <WrapForm
     :skeleton="skeleton"
     :struct="struct"

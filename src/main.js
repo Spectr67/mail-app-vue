@@ -4,7 +4,7 @@ import App from './App.vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue-next/dist/bootstrap-vue-next.css'
 
-import 'materialize-css/dist/css/materialize.css'
+// import 'materialize-css/dist/css/materialize.css'
 import 'materialize-css'
 import 'material-icons'
 
