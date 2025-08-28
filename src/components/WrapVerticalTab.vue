@@ -35,3 +35,9 @@ export default {
     </BTabs>
   </BCard>
 </template>
+
+<style>
+.tab-content .tab-content {
+  width: 50%;
+}
+</style>
