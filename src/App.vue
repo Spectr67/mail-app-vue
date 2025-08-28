@@ -76,24 +76,13 @@ export default {
         @register="handleUserRegister($event)"
         @login="handleUserLogin($event)"
         @logout="handleUserLogout"
+        @getemail="handleGetEmail"
         :currentUser="currentUser"
+        :incoming="incoming"
+        :outcoming="outcoming"
       />
     </div>
   </div>
-  <!-- :inconimg="incoming"
-    :outcoming="outcoming" -->
-  <!-- <div class="form">
-    <div class="leftone">
-      <ul>
-        <li v-for="(item, idx) of incoming" :key="item.id">{{ item }}</li>
-      </ul>
-    </div>
-    <div class="rightone">
-      <ul>
-        <li v-for="(item, idx) of outcoming" :key="item.id">{{ item }}</li>
-      </ul>
-    </div>
-  </div> -->
 </template>
 
 <style scoped>

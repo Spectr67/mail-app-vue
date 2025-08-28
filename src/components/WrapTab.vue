@@ -21,7 +21,7 @@ export default {
     BButtonGroup,
     BButtonToolbar,
   },
-  emits: ['register', 'login', 'logout'],
+  emits: ['register', 'login', 'logout', 'getemail'],
   props: ['currentUser', 'incoming', 'outcoming'],
   data() {
     return {
@@ -90,6 +90,7 @@ export default {
           <BButtonToolbar justify aria-label="Toolbar with justify">
             <BButtonGroup class="mx-1">
               <BButton>New</BButton>
+              <BButton @click="$emit('getemail')">Get mail</BButton>
               <BButton v-if="currentUser">{{ currentUser.firstName }}</BButton>
             </BButtonGroup>
             <BButtonGroup class="mx-1">
@@ -98,17 +99,8 @@ export default {
             </BButtonGroup>
           </BButtonToolbar>
         </div>
-        <WrapVerticalTab />
+        <WrapVerticalTab :incoming="incoming" :outcoming="outcoming" />
       </div>
     </BTab>
   </BTabs>
 </template>
-
-<!-- <BTab
-  :title="currentUser ? currentUser.firstName : ''"
-  :disabled="!currentUser"
->
-  <div class="p-3">
-    <BButton variant="danger" @click="logout">Выйти</BButton>
-  </div>
-</BTab> -->

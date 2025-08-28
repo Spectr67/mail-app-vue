@@ -1,6 +1,5 @@
 <script>
 import { BButton, BCard, BCardBody, BTab, BTabs } from 'bootstrap-vue-next'
-import EmailSubmitterMigrate from './EmailSubmitter-migrate.vue'
 import WrapAccordion from './WrapAccordion.vue'
 
 export default {
@@ -10,23 +9,23 @@ export default {
     BCardBody,
     BTabs,
     BButton,
-    EmailSubmitterMigrate,
     WrapAccordion,
   },
+  props: ['incoming', 'outcoming'],
 }
 </script>
-
 <template>
-  <BCard no-body>
+  <BCard no-body class="tabs-container">
     <BTabs pills card vertical nav-wrapper-class="w-50">
-      <BTab title="Tab 1" active
+      <BTab title="incoming" active
         ><BCardBody
-          ><div><EmailSubmitterMigrate /></div></BCardBody
+          ><WrapAccordion :emails="incoming"></WrapAccordion></BCardBody
       ></BTab>
-      <BTab title="Tab 2"
-        ><BCardBody><WrapAccordion /></BCardBody
+      <BTab title="outcoming"
+        ><BCardBody>
+          <WrapAccordion :emails="outcoming"></WrapAccordion> </BCardBody
       ></BTab>
-      <BTab title="Tab 3"><BCardBody>Tab contents 3</BCardBody></BTab>
+      <BTab title="spam"><BCardBody>Tab contents 3</BCardBody></BTab>
     </BTabs>
   </BCard>
 </template>
