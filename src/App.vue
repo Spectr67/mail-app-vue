@@ -68,15 +68,14 @@ export default {
 </script>
 <template>
   {{ currentUser }}
-  {{ incoming }}
   <div class="main">
-    <!-- <WrapVerticalTab /> -->
     <div>
       <WrapTab
         @register="handleUserRegister($event)"
         @login="handleUserLogin($event)"
         @logout="handleUserLogout"
         @getemail="handleGetEmail"
+        @emailSubmitted="handleSendEmail($event)"
         :currentUser="currentUser"
         :incoming="incoming"
         :outcoming="outcoming"

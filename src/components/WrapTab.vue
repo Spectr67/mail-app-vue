@@ -9,6 +9,7 @@ import {
 import SignInSubmitterMigrate from './SignInSubmitter-migrate.vue'
 import SignUpSubmitterMigrate from './SignUpSubmitter-migrate.vue'
 import WrapVerticalTab from './WrapVerticalTab.vue'
+import EmailSubmitterMigrate from './EmailSubmitter-migrate.vue'
 
 export default {
   components: {
@@ -20,8 +21,9 @@ export default {
     WrapVerticalTab,
     BButtonGroup,
     BButtonToolbar,
+    EmailSubmitterMigrate,
   },
-  emits: ['register', 'login', 'logout', 'getemail'],
+  emits: ['register', 'login', 'logout', 'getemail', 'emailSubmitted'],
   props: ['currentUser', 'incoming', 'outcoming'],
   data() {
     return {
@@ -43,13 +45,12 @@ export default {
 
     logout() {
       this.$emit('logout')
-      this.regEmail = ''
-      this.regPassword = ''
-      this.loginEmail = ''
-      this.loginPassword = ''
       this.$nextTick(() => {
         this.tabIndex = 0
       })
+    },
+    emailSubmitted(email) {
+      this.$emit('emailSubmitted', email)
     },
   },
 }
@@ -100,6 +101,11 @@ export default {
           </BButtonToolbar>
         </div>
         <WrapVerticalTab :incoming="incoming" :outcoming="outcoming" />
+      </div>
+    </BTab>
+    <BTab title="Email" :disabled="!currentUser">
+      <div class="p-3">
+        <EmailSubmitterMigrate @submitted="emailSubmitted" />
       </div>
     </BTab>
   </BTabs>
