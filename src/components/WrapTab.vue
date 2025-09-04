@@ -29,6 +29,7 @@ export default {
     return {
       tabIndex: 0,
       title: this.currentUser,
+      replyEmailString: '',
     }
   },
   methods: {
@@ -51,6 +52,11 @@ export default {
     },
     emailSubmitted(email) {
       this.$emit('emailSubmitted', email)
+    },
+    replyEmail(email) {
+      this.replyEmailString = email.sender
+      this.tabIndex = 4
+      console.log(this.replyEmailString)
     },
   },
 }
@@ -100,7 +106,11 @@ export default {
             </BButtonGroup>
           </BButtonToolbar>
         </div>
-        <WrapVerticalTab :incoming="incoming" :outcoming="outcoming" />
+        <WrapVerticalTab
+          :incoming="incoming"
+          :outcoming="outcoming"
+          @reply="replyEmail"
+        />
       </div>
     </BTab>
     <BTab title="Email" :disabled="!currentUser">

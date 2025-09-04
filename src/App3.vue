@@ -1,11 +1,12 @@
 <script>
 import TestAccordion from './components/TestAccordion.vue'
+import WrapInputSearch from './components/WrapInputSearch.vue'
 
 export default {
-  components: { TestAccordion },
+  components: { WrapInputSearch },
 }
 </script>
 
 <template>
-  <div><TestAccordion /></div>
+  <div><WrapInputSearch /></div>
 </template>

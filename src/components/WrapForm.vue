@@ -5,7 +5,7 @@ import WrapFormInput from './WrapFormInput.vue'
 export default {
   components: { BForm, BButton, WrapFormInput },
   emits: ['submitted'],
-  props: ['skeleton', 'struct'],
+  props: ['skeleton', 'struct', 'inputData'],
 
   data() {
     return {

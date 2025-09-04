@@ -1,6 +1,4 @@
 <script>
-import MBage from './ui/MBage.vue'
-import MButton from './ui/MButton.vue'
 import SignInSubmitterMigrate from './components/SignInSubmitter-migrate.vue'
 import SignUpSubmitterMigrate from './components/SignUpSubmitter-migrate.vue'
 import EmailSubmitterMigrate from './components/EmailSubmitter-migrate.vue'
@@ -16,8 +14,6 @@ import WrapVerticalTab from './components/WrapVerticalTab.vue'
 
 export default {
   components: {
-    MBage,
-    MButton,
     SignInSubmitterMigrate,
     SignUpSubmitterMigrate,
     EmailSubmitterMigrate,

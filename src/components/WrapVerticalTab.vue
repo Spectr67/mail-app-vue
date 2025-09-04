@@ -19,17 +19,25 @@ export default {
     BButton,
     WrapAccordion,
     EmailSubmitterMigrate,
-    BBadge,
   },
   props: ['incoming', 'outcoming'],
+  emits: ['reply'],
+  methods: {
+    replyEmail(email) {
+      this.$emit('reply', email)
+    },
+  },
 }
 </script>
 <template>
   <BCard no-body class="tabs-container">
     <BTabs pills card vertical nav-wrapper-class="w-50">
-      <BTab title="incoming" active
+      <BTab title="incoming : 0" active
         ><BCardBody
-          ><WrapAccordion :emails="incoming"></WrapAccordion></BCardBody
+          ><WrapAccordion
+            :emails="incoming"
+            @reply="replyEmail"
+          ></WrapAccordion></BCardBody
       ></BTab>
       <BTab title="outcoming"
         ><BCardBody>

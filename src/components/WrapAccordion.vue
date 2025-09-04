@@ -20,6 +20,12 @@ export default {
     BDropdown,
   },
   props: ['emails'],
+  emits: ['reply'],
+  methods: {
+    replyEmail(email) {
+      this.$emit('reply', email)
+    },
+  },
 }
 </script>
 
@@ -34,7 +40,7 @@ export default {
     >
       <BButtonToolbar justify aria-label="Toolbar with justify">
         <BButtonGroup class="mx-1">
-          <BButton>Reply</BButton>
+          <BButton @click="replyEmail(email)">Reply</BButton>
           <BButton>Send</BButton>
           <BButton>Delete</BButton>
         </BButtonGroup>

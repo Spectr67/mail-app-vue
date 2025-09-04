@@ -4,7 +4,7 @@ import WrapForm from './WrapForm.vue'
 export default {
   components: { WrapForm },
   emits: ['submitted'],
-
+  props: ['inputData'],
   data() {
     return {
       skeleton: [{ recipient: 's12' }, { subject: 's12' }, { text: 's12' }],
@@ -42,6 +42,7 @@ export default {
 
 <template>
   <WrapForm
+    :inputData="inputData"
     :skeleton="skeleton"
     :struct="struct"
     :confirm-caption="confirmCaption"
