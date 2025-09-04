@@ -4,16 +4,9 @@ import { BFormTags } from 'bootstrap-vue-next'
 export default {
   name: 'ContactTagSearch',
   components: { BFormTags },
-
+  props: ['emails'],
   data() {
     return {
-      emails: [
-        'arthur@test.com',
-        'ivan@test.com',
-        'kolya@test.com',
-        'ivan@test2.com',
-        'ivan@test3.com',
-      ],
       value: [],
     }
   },

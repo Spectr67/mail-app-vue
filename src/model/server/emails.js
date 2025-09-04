@@ -29,19 +29,4 @@ function receiveOutcoming(sender) {
   return emails.filter(e => e.sender === sender)
 }
 
-// read/write
-// get/set
-// receive/send
-// delete/create
-// remove/add
-
 export { sendEmail, receiveIncoming, receiveOutcoming }
-
-// const email = {
-//   id: 1,
-//   recipient: 'foo@bar.com',
-//   sender: 'baz@bar.com',
-//   subject: 'срочно!! ответь!!',
-//   text: 'привет, как дела, извини, что напугал',
-//   date: 123456789,
-// }

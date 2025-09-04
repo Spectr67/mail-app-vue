@@ -26,6 +26,7 @@ export default {
       incoming: [],
       outcoming: [],
       currentUser: null,
+      avaibleEmails: [],
     }
   },
   methods: {
@@ -49,6 +50,14 @@ export default {
     handleGetEmail() {
       this.incoming = receiveIncoming(this.currentUser.email).toReversed()
       this.outcoming = receiveOutcoming(this.currentUser.email).toReversed()
+      this.getAvailableEmails()
+    },
+    getAvailableEmails() {
+      const allEmails = [...this.incoming, ...this.outcoming]
+      const emailList = allEmails.flatMap(e => [e.sender, e.recipient])
+      const result = [...new Set(emailList)]
+      this.avaibleEmails = result
+      console.log(this.avaibleEmails)
     },
     handleSendEmail(email) {
       sendEmail(
@@ -63,7 +72,7 @@ export default {
 }
 </script>
 <template>
-  {{ currentUser }}
+  {{ avaibleEmails }}
   <div class="main">
     <div>
       <WrapTab
