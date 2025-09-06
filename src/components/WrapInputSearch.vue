@@ -22,7 +22,7 @@ export default {
 
 <template>
   <div>
-    <datalist id="foo">
+    <datalist id="email-addresses-list">
       <option
         v-for="email in availableEmails"
         :key="email"
@@ -31,8 +31,7 @@ export default {
     </datalist>
 
     <BFormTags
-      list="foo"
-      :input-attrs="{ list: 'foo' }"
+      :input-attrs="{ list: 'email-addresses-list' }"
       v-model="value"
       input-id="tags-basic"
       placeholder="Введите email"

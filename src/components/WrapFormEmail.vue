@@ -28,10 +28,11 @@ export default {
 
 <template>
   <div>
+    <WrapInputSearch :list="list" />
     <div v-for="(row, idx) of skeleton" :key="idx" class="row">
       <div v-for="(col, key) of row" :key="key" class="col" :class="col">
-        <WrapInputSearch :list="list" />
         <WrapFormInput
+          :list="list"
           :is="localStruct[key].component"
           :caption="localStruct[key].caption"
           v-model="localStruct[key].data"

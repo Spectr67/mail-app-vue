@@ -8,15 +8,16 @@ export default {
   props: ['list'],
   data() {
     return {
-      skeleton: [{ recipient: 's12' }, { subject: 's12' }, { text: 's12' }],
+      skeleton: [, { subject: 's12' }, { text: 's12' }],
       struct: {
-        recipient: {
-          col: 's12',
-          caption: 'recipient',
-          type: 'text',
-          data: undefined,
-          component: 'WrapInputSearch',
-        },
+        // { recipient: 's12' }
+        // recipient: {
+        //   col: 's12',
+        //   caption: 'recipient',
+        //   type: 'text',
+        //   data: undefined,
+        //   component: 'WrapInputSearch',
+        // },
         subject: {
           col: 's12',
           caption: 'subject',
