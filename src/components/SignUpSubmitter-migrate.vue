@@ -8,13 +8,13 @@ export default {
   data() {
     return {
       skeleton: [
-        { email: 's6', password: 's6' },
+        { emailAddress: 's6', password: 's6' },
         // { password: 's6' },
         { firstName: 's6', lastName: 's6' },
         // { lastName: 's6' },
       ],
       struct: {
-        email: {
+        emailAddress: {
           col: 's6',
           caption: 'Email',
           // type: 'email',

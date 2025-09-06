@@ -1,30 +1,35 @@
 import makeId from '../makeId.js'
 import { setAccounts, getAccounts } from './localStorage/accountsStorage.js'
 
-function createAccount(email, password, firstName, lastName) {
+function createAccount(emailAddress, password, firstName, lastName) {
+  console.log(emailAddress)
   return {
     id: makeId(),
     date: Date.now(),
-    email,
+    emailAddress,
     password,
     firstName,
     lastName,
   }
 }
 
-function loginAccount(email, password) {
+function loginAccount(emailAddress, password) {
   const accounts = getAccounts()
-  return accounts.find(a => a.email === email && a.password === password)
+  return accounts.find(
+    a => a.emailAddress === emailAddress && a.password === password
+  )
 }
 
 function registerAccount(account) {
   const accounts = getAccounts()
 
-  const findedAccount = accounts.find(a => a.email === account.email)
+  const findedAccount = accounts.find(
+    a => a.emailAddress === account.emailAddress
+  )
   if (findedAccount) return false
 
   const acc = createAccount(
-    account.email,
+    account.emailAddress,
     account.password,
     account.firstName,
     account.lastName

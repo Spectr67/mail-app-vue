@@ -25,46 +25,50 @@ export default {
     return {
       incoming: [],
       outcoming: [],
-      currentUser: null,
-      avaibleEmails: [],
+      currentAccount: null,
+      emailAddressesList: [],
     }
   },
   methods: {
-    handleUserLogin(user) {
-      const account = loginAccount(user.email, user.password)
+    handleAccountLogin(accountDTo) {
+      const account = loginAccount(accountDTo.emailAddress, accountDTo.password)
       if (account) {
-        this.$emit('userLogin', { ...account })
-        this.currentUser = account
+        this.$emit('accountLogin', { ...account })
+        this.currentAccount = account
       }
     },
-    handleUserRegister(userData) {
-      const response = registerAccount(userData)
+    handleAccountRegister(accountData) {
+      const response = registerAccount(accountData)
       if (response) {
         console.log('welcome')
       }
     },
-    handleUserLogout() {
-      this.currentUser = null
+    handleAccountLogout() {
+      this.currentAccount = null
     },
 
     handleGetEmail() {
-      this.incoming = receiveIncoming(this.currentUser.email).toReversed()
-      this.outcoming = receiveOutcoming(this.currentUser.email).toReversed()
-      this.getAvailableEmails()
+      this.incoming = receiveIncoming(
+        this.currentAccount.emailAddress
+      ).toReversed()
+      this.outcoming = receiveOutcoming(
+        this.currentAccount.emailAddress
+      ).toReversed()
+      this.getEmailAddressesList()
     },
-    getAvailableEmails() {
+    getEmailAddressesList() {
       const allEmails = [...this.incoming, ...this.outcoming]
       const emailList = allEmails.flatMap(e => [e.sender, e.recipient])
       const result = [...new Set(emailList)]
-      this.avaibleEmails = result
-      console.log(this.avaibleEmails)
+      this.emailAddressesList = result
+      console.log(this.emailAddressesList)
     },
-    handleSendEmail(email) {
+    handleSendEmail(emailDto) {
       sendEmail(
-        this.currentUser.email,
-        email.recipient,
-        email.subject,
-        email.text
+        this.currentAccount.emailAddress,
+        emailDto.recipient,
+        emailDto.subject,
+        emailDto.text
       )
       this.handleGetEmail()
     },
@@ -72,18 +76,20 @@ export default {
 }
 </script>
 <template>
-  {{ avaibleEmails }}
+  {{ emailAddressesList }}
+  {{ currentAccount }}
   <div class="main">
     <div>
       <WrapTab
-        @register="handleUserRegister($event)"
-        @login="handleUserLogin($event)"
-        @logout="handleUserLogout"
+        @register="handleAccountRegister($event)"
+        @login="handleAccountLogin($event)"
+        @logout="handleAccountLogout"
         @getemail="handleGetEmail"
         @emailSubmitted="handleSendEmail($event)"
-        :currentUser="currentUser"
+        :currentAccount="currentAccount"
         :incoming="incoming"
         :outcoming="outcoming"
+        :list="emailAddressesList"
       />
     </div>
   </div>

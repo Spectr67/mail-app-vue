@@ -8,9 +8,9 @@ export default {
 
   data() {
     return {
-      skeleton: [{ email: 's12' }, { password: 's12' }],
+      skeleton: [{ emailAddress: 's12' }, { password: 's12' }],
       struct: {
-        email: {
+        emailAddress: {
           col: 's12',
           caption: 'Email',
           // type: 'email',

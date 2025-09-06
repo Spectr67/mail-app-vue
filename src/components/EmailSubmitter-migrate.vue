@@ -1,10 +1,11 @@
 <script>
-import WrapForm from './WrapForm.vue'
+import WrapFormEmail from './WrapFormEmail.vue'
+import WrapFormInput from './WrapFormInput.vue'
 
 export default {
-  components: { WrapForm },
+  components: { WrapFormEmail, WrapFormInput },
   emits: ['submitted'],
-  props: ['inputData'],
+  props: ['list'],
   data() {
     return {
       skeleton: [{ recipient: 's12' }, { subject: 's12' }, { text: 's12' }],
@@ -14,7 +15,7 @@ export default {
           caption: 'recipient',
           type: 'text',
           data: undefined,
-          component: 'MInput',
+          component: 'WrapInputSearch',
         },
         subject: {
           col: 's12',
@@ -41,8 +42,8 @@ export default {
 </script>
 
 <template>
-  <WrapForm
-    :inputData="inputData"
+  <WrapFormEmail
+    :list="list"
     :skeleton="skeleton"
     :struct="struct"
     :confirm-caption="confirmCaption"

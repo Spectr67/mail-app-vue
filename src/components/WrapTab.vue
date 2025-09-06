@@ -24,21 +24,21 @@ export default {
     EmailSubmitterMigrate,
   },
   emits: ['register', 'login', 'logout', 'getemail', 'emailSubmitted'],
-  props: ['currentUser', 'incoming', 'outcoming'],
+  props: ['currentAccount', 'incoming', 'outcoming', 'list'],
   data() {
     return {
       tabIndex: 0,
-      title: this.currentUser,
+      title: this.currentAccount,
       replyEmailString: '',
     }
   },
   methods: {
-    register(user) {
-      this.$emit('register', user)
+    register(account) {
+      this.$emit('register', account)
     },
 
-    login(user) {
-      this.$emit('login', user)
+    login(account) {
+      this.$emit('login', account)
       this.$nextTick(() => {
         this.tabIndex = 3
       })
@@ -66,7 +66,7 @@ export default {
   {{ tabIndex }}
 
   <BTabs v-model:index="tabIndex">
-    <BTab title="Главная" :disabled="!!currentUser">
+    <BTab title="Главная" :disabled="!!currentAccount">
       <div class="p-3">
         <h3>Добро пожаловать!</h3>
         <p>Выберите действие:</p>
@@ -77,28 +77,30 @@ export default {
       </div>
     </BTab>
 
-    <BTab title="Регистрация" :disabled="!!currentUser">
+    <BTab title="Регистрация" :disabled="!!currentAccount">
       <div class="p-3">
         <h4>Регистрация</h4>
         <SignUpSubmitterMigrate @submitted="register" />
       </div>
     </BTab>
 
-    <BTab title="Логин" :disabled="!!currentUser">
+    <BTab title="Логин" :disabled="!!currentAccount">
       <div class="p-3">
         <h4>Вход</h4>
         <SignInSubmitterMigrate @submitted="login" />
       </div>
     </BTab>
 
-    <BTab title="email" :disabled="!currentUser">
+    <BTab title="email" :disabled="!currentAccount">
       <div class="p-3">
         <div>
           <BButtonToolbar justify aria-label="Toolbar with justify">
             <BButtonGroup class="mx-1">
               <BButton @click="tabIndex = 4">New</BButton>
               <BButton @click="$emit('getemail')">Get mail</BButton>
-              <BButton v-if="currentUser">{{ currentUser.firstName }}</BButton>
+              <BButton v-if="currentAccount">{{
+                currentAccount.firstName
+              }}</BButton>
             </BButtonGroup>
             <BButtonGroup class="mx-1">
               <BButton>Save</BButton>
@@ -113,9 +115,9 @@ export default {
         />
       </div>
     </BTab>
-    <BTab title="Email" :disabled="!currentUser">
+    <BTab title="Email" :disabled="!currentAccount">
       <div class="p-3">
-        <EmailSubmitterMigrate @submitted="emailSubmitted" />
+        <EmailSubmitterMigrate @submitted="emailSubmitted" :list="list" />
       </div>
     </BTab>
   </BTabs>
