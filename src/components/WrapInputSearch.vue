@@ -5,6 +5,7 @@ export default {
   name: 'ContactTagSearch',
   components: { BFormTags },
   props: ['list'],
+  emits: ['update:modelValue'],
   data() {
     return {
       value: [],
@@ -33,6 +34,7 @@ export default {
     <BFormTags
       :input-attrs="{ list: 'email-addresses-list' }"
       v-model="value"
+      @update:model-value="$emit('update:modelValue', $event)"
       input-id="tags-basic"
       placeholder="Введите email"
     />
