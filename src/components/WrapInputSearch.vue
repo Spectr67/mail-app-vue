@@ -2,9 +2,8 @@
 import { BFormTags } from 'bootstrap-vue-next'
 
 export default {
-  name: 'ContactTagSearch',
   components: { BFormTags },
-  props: ['list'],
+  props: ['modelValue', 'list'],
   emits: ['update:modelValue'],
   data() {
     return {
@@ -33,8 +32,12 @@ export default {
 
     <BFormTags
       :input-attrs="{ list: 'email-addresses-list' }"
-      v-model="value"
-      @update:model-value="$emit('update:modelValue', $event)"
+      :model-value="modelValue"
+      @update:model-value="
+        ;(value = $event),
+          console.log('foo'),
+          $emit('update:modelValue', $event[0])
+      "
       input-id="tags-basic"
       placeholder="Введите email"
     />

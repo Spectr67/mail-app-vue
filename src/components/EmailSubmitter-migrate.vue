@@ -8,29 +8,29 @@ export default {
   props: ['list'],
   data() {
     return {
-      skeleton: [, { subject: 's12' }, { text: 's12' }],
+      skeleton: [{ recipient: 's12' }, { subject: 's12' }, { text: 's12' }],
       struct: {
-        // { recipient: 's12' }
-        // recipient: {
-        //   col: 's12',
-        //   caption: 'recipient',
-        //   type: 'text',
-        //   data: undefined,
-        //   component: 'WrapInputSearch',
-        // },
+        //
+        recipient: {
+          col: 's12',
+          caption: 'recipient',
+          type: 'text',
+          data: undefined,
+          component: 'WrapInputSearch',
+        },
         subject: {
           col: 's12',
           caption: 'subject',
           type: 'text',
           data: undefined,
-          component: 'MInput',
+          component: 'WrapFormInput',
         },
         text: {
           col: 's12',
           caption: 'text',
           type: 'text',
           data: undefined,
-          component: 'MInput',
+          component: 'WrapFormInput',
         },
       },
       confirmCaption: 'Send',
@@ -43,6 +43,7 @@ export default {
 </script>
 
 <template>
+  <h2>!!!</h2>
   <WrapFormEmail
     :list="list"
     :skeleton="skeleton"

@@ -14,7 +14,6 @@ export default {
       :model-value="modelValue"
       @update:model-value="$emit('update:modelValue', $event)"
       :type="type || 'text'"
-      :placeholder="caption"
     />
   </BFormFloatingLabel>
 </template>

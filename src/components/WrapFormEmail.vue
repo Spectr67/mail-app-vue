@@ -21,6 +21,7 @@ export default {
       )
       this.$emit('submitted', account)
       this.localStruct = JSON.parse(JSON.stringify(this.struct))
+      console.log('++', account)
     },
   },
 }
@@ -28,10 +29,9 @@ export default {
 
 <template>
   <div>
-    <WrapInputSearch :list="list" />
     <div v-for="(row, idx) of skeleton" :key="idx" class="row">
       <div v-for="(col, key) of row" :key="key" class="col" :class="col">
-        <WrapFormInput
+        <component
           :list="list"
           :is="localStruct[key].component"
           :caption="localStruct[key].caption"
@@ -43,7 +43,7 @@ export default {
       </div>
     </div>
     <BForm @submit.prevent="submit">
-      <BButton variant="success" type="submit">Submit</BButton>
+      <BButton variant="success" type="submit">Submit!</BButton>
     </BForm>
   </div>
 </template>
